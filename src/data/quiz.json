@@ -1,0 +1,167 @@
+[
+  {
+    "id": "q1",
+    "question": "What does SRHR stand for?",
+    "options": [
+      "Sexual and Reproductive Health and Rights",
+      "Social and Religious Health Roles",
+      "Safety and Recovery Health Regions",
+      "Sexual and Relational Health Rights"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "q2",
+    "question": "Can you get pregnant the first time you have sex?",
+    "options": [
+      "No, only after several times",
+      "Yes, any time you have unprotected sex",
+      "Only if you are over 18",
+      "Only during high tide"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q3",
+    "question": "What is consent?",
+    "options": [
+      "Saying yes once and never again",
+      "Clear, enthusiastic, and freely given permission",
+      "Doing what your partner wants no matter what",
+      "Silence means yes"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q4",
+    "question": "How often should you get tested for STIs if you are sexually active?",
+    "options": [
+      "Only if you feel sick",
+      "Never, if you use condoms",
+      "Regularly, as recommended by a healthcare provider",
+      "Once every 10 years"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "q5",
+    "question": "Are contraceptives 100% effective at preventing pregnancy?",
+    "options": [
+      "Yes, all of them",
+      "No, but most are highly effective when used correctly",
+      "Only if they are from a pharmacy",
+      "Only for people over 25"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q6",
+    "question": "Is it okay to withdraw consent at any time?",
+    "options": [
+      "No, once you say yes you must continue",
+      "Yes, you have the right to change your mind at any moment",
+      "Only if you have a good reason",
+      "Only if your partner agrees"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q7",
+    "question": "What is the best way to prevent both STIs and pregnancy?",
+    "options": [
+      "Using a condom correctly every time",
+      "Washing after sex",
+      "Using only the withdrawal method",
+      "Hoping for the best"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "q8",
+    "question": "Who has sexual and reproductive health rights?",
+    "options": [
+      "Only married people",
+      "Only people over 18",
+      "Every single person, including all young people",
+      "Only people without disabilities"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "q9",
+    "question": "Can you tell if someone has HIV just by looking at them?",
+    "options": [
+      "Yes, they always look sick",
+      "No, the only way to know is a medical test",
+      "Yes, if they are thin",
+      "Only if they have a cough"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q10",
+    "question": "Is menstruation a natural and healthy process?",
+    "options": [
+      "No, it is a sign of illness",
+      "Yes, it is a natural biological function",
+      "It is a curse from ancestors",
+      "It only happens if you eat too much"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q11",
+    "question": "What is bodily autonomy?",
+    "options": [
+      "The right to make decisions about your own body",
+      "The right to choose your body type",
+      "The right to drive a car",
+      "The right to own a body"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "q12",
+    "question": "Should you share your SRHR information with everyone online?",
+    "options": [
+      "Yes, it helps others learn",
+      "No, you have a right to privacy and should be careful online",
+      "Only if they ask nicely",
+      "Only if they are your best friend"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q13",
+    "question": "Are all youth-friendly clinics in Kenya only for girls?",
+    "options": [
+      "Yes, boys don't need SRHR",
+      "No, clinics should be inclusive and welcoming for all youth",
+      "Only if they are in Nairobi",
+      "Only if they are private"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q14",
+    "question": "Can stress affect your menstrual cycle?",
+    "options": [
+      "No, it's strictly physical",
+      "Yes, emotional well-being is linked to reproductive health",
+      "Only if you are over 30",
+      "Only if it's very hot outside"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q15",
+    "question": "Where can you find trusted SRHR support in Kenya?",
+    "options": [
+      "Only on random social media posts",
+      "At youth-friendly clinics and approved helplines",
+      "From strangers on the street",
+      "By guessing"
+    ],
+    "answer": 1
+  }
+]

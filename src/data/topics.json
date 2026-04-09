@@ -1,0 +1,147 @@
+[
+  {
+    "id": "overview",
+    "title": "Overview of SRHR",
+    "description": "Understanding your sexual and reproductive health and rights as a young person in Kenya.",
+    "icon": "Info",
+    "content": "Sexual and Reproductive Health and Rights (SRHR) is about having the information and services you need to make safe and healthy choices. This includes rights like bodily autonomy, privacy, and access to care.",
+    "easyReadContent": "SRHR is about your body and your choices. You have the right to: \n• Know how your body works \n• Stay safe and healthy \n• Decide what happens to your body \n• Get medical help when you need it."
+  },
+  {
+    "id": "menstrual-health",
+    "title": "Menstrual Health",
+    "description": "Learning about your cycle, hygiene management, and breaking the stigma.",
+    "icon": "Waves",
+    "content": "Menstruation is a natural process. We provide tips on tracking your cycle, choosing the right hygiene products, and managing cramps effectively.",
+    "easyReadContent": "Menstruation (your period) is normal. \n• It happens about once a month. \n• Use clean pads or cloths. \n• Wash your body every day. \n• Rest if you have pain."
+  },
+  {
+    "id": "family-planning",
+    "title": "Family Planning",
+    "description": "Information on contraceptives and planning your future.",
+    "icon": "Calendar",
+    "content": "Family planning allows you to decide if and when to have children. There are many methods available in Kenya, ranging from pills to long-term options.",
+    "easyReadContent": "Family planning helps you plan your future. \n• You can choose when to have a baby. \n• There are many ways to prevent pregnancy. \n• Talk to a nurse to find the best way for you."
+  },
+  {
+    "id": "sti-hiv-prevention",
+    "title": "STI/HIV Prevention",
+    "description": "How to protect yourself and get tested.",
+    "icon": "ShieldCheck",
+    "content": "Prevention is key. Learn about barrier methods, PrEP, and the importance of regular testing for STIs and HIV.",
+    "easyReadContent": "Stop infections like HIV and STIs. \n• Use condoms to stay safe. \n• Get tested at a clinic. \n• Ask a doctor about PrEP medicine."
+  },
+  {
+    "id": "pregnancy-childbirth",
+    "title": "Pregnancy and Childbirth",
+    "description": "Safe pregnancy, prenatal care, and what to expect.",
+    "icon": "Baby",
+    "content": "Healthy pregnancies require early prenatal care. We cover everything from nutrition to identifying danger signs.",
+    "easyReadContent": "Staying healthy during pregnancy. \n• Go to the clinic early. \n• Eat good food and rest. \n• Know the signs of trouble."
+  },
+  {
+    "id": "abortion-safe-choices",
+    "title": "Abortion and Safe Choices",
+    "description": "Understanding legal and clinical aspects of safe abortion in Kenya.",
+    "icon": "HeartHandshake",
+    "content": "Accessing safe services is a right. We provide information on Post-Abortion Care (PAC) and the legal framework for safe termination in Kenya."
+  },
+  {
+    "id": "hygiene-body-care",
+    "title": "Hygiene and Body Care",
+    "description": "Daily routines for a healthy body.",
+    "icon": "Sparkles",
+    "content": "Personal hygiene is essential for preventing infections. Learn the best practices for cleaning and caring for your body during puberty."
+  },
+  {
+    "id": "bodily-autonomy",
+    "title": "Bodily Autonomy",
+    "description": "My body, my choice. Learning about consent and boundaries.",
+    "icon": "UserCheck",
+    "content": "Bodily autonomy means you have the right to make decisions about your own body without coercion or violence."
+  },
+  {
+    "id": "adolescent-health",
+    "title": "Adolescent Health",
+    "description": "Special guidance for the teenage years.",
+    "icon": "Users",
+    "content": "Puberty brings many changes. We offer support for navigating emotional and physical shifts during adolescence."
+  },
+  {
+    "id": "maternal-health",
+    "title": "Maternal Health",
+    "description": "Care for mothers before, during, and after birth.",
+    "icon": "Heart",
+    "content": "Ensuring mothers stay healthy is vital for the whole family. Learn about nutrition, rest, and medical checkups."
+  },
+  {
+    "id": "puberty-basics",
+    "title": "Puberty Basics",
+    "description": "What happens during growth years.",
+    "icon": "TrendingUp",
+    "content": "Growth spurts, voice changes, and new feelings are all part of puberty. It's perfectly normal!"
+  },
+  {
+    "id": "consent-basics",
+    "title": "Understanding Consent",
+    "description": "Key principles of healthy relationships.",
+    "icon": "Handshake",
+    "content": "Consent is continuous, enthusiastic, and freely given. If it's not a 'YES', it's a 'NO'."
+  },
+  {
+    "id": "digital-safety",
+    "title": "Digital Safety & SRHR",
+    "description": "Staying safe while seeking info online.",
+    "icon": "Globe",
+    "content": "Information online can be tricky. Learn how to identify trusted sources and protect your privacy."
+  },
+  {
+    "id": "mental-health-srhr",
+    "title": "Mental Health & SRHR",
+    "description": "The link between your emotions and physical health.",
+    "icon": "Brain",
+    "content": "Emotional well-being is part of SRHR. Stress and anxiety can affect your hormonal balance and overall health."
+  },
+  {
+    "id": "nutrition-health",
+    "title": "Nutrition for Reproductive Health",
+    "description": "Fueling your body right.",
+    "icon": "Apple",
+    "content": "A balanced diet supports reproductive health, from menstrual regularity to healthy skin."
+  },
+  {
+    "id": "gender-equality",
+    "title": "Gender Equality",
+    "description": "Fairness and rights for all genders.",
+    "icon": "Scale",
+    "content": "SRHR is for everyone. Challenging gender norms helps create a safer environment for all."
+  },
+  {
+    "id": "relationships",
+    "title": "Healthy Relationships",
+    "description": "Building trust and respect.",
+    "icon": "Smile",
+    "content": "Communication and respect are the foundation of any healthy relationship, whether with friends or partners."
+  },
+  {
+    "id": "preventing-gbv",
+    "title": "Preventing GBV",
+    "description": "Recognizing and stopping violence.",
+    "icon": "Lock",
+    "content": "Gender-Based Violence (GBV) is never okay. Learn about your rights and how to seek help in Kenya."
+  },
+  {
+    "id": "self-care",
+    "title": "Self-Care Rituals",
+    "description": "Take time for yourself.",
+    "icon": "Moon",
+    "content": "Self-care isn't selfish. It's about maintaining your capacity to function and thrive."
+  },
+  {
+    "id": "community-support",
+    "title": "Community Support",
+    "description": "Finding strength in groups.",
+    "icon": "Users2",
+    "content": "Peer support can make a huge difference in how you process SRHR journeys."
+  }
+]

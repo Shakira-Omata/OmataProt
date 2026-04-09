@@ -1,0 +1,107 @@
+[
+  {
+    "id": "g1",
+    "title": "SRHR Basics Guide",
+    "description": "An introduction to sexual and reproductive health and rights for Kenyan youth.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g2",
+    "title": "Inclusive Menstrual Hygiene Tips",
+    "description": "A guide for all young people to manage their periods with dignity and confidence.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g3",
+    "title": "Consent Toolkit",
+    "description": "Tools and conversation starters for exploring consent and healthy boundaries.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g4",
+    "title": "STI and HIV Prevention Explainer",
+    "description": "A simple and clear guide to staying safe and where to get tested in Kenya.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g5",
+    "title": "Prenatal Care Checklist",
+    "description": "A useful guide for staying healthy before, during, and after pregnancy.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g6",
+    "title": "Safe Abortion Care Info",
+    "description": "Information on your rights and how to access safe post-abortion care services.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g7",
+    "title": "Puberty for Everyone",
+    "description": "A youth-friendly guide to understanding and celebrating the changes in your body.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g8",
+    "title": "Nutrition and Your Health",
+    "description": "Practical tips for eating well and supporting your reproductive health.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g9",
+    "title": "Digital Privacy for SRHR",
+    "description": "How to stay safe while searching for health information and chatting online.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g10",
+    "title": "Self-Care Rituals Guide",
+    "description": "simple self-care practices to support your physical and emotional well-being.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g11",
+    "title": "Building Inclusive Communities",
+    "description": "How to create safe and welcoming spaces for all youth in Kenya.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g12",
+    "title": "Advocacy 101 for Youth",
+    "description": "A toolkit for young people to advocate for better SRHR policies in their area.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g13",
+    "title": "Healthy Relationships Toolkit",
+    "description": "building trust, respect, and communication in your relationships.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g14",
+    "title": "Navigating Kenyan Healthcare",
+    "description": "Tips for ensuring your rights are respected when visiting SRHR clinics.",
+    "format": "PDF",
+    "accessible": true
+  },
+  {
+    "id": "g15",
+    "title": "Empowered and Informed: SRHR",
+    "description": "Bringing it all together: your rights, your health, and your future.",
+    "format": "PDF",
+    "accessible": true
+  }
+]

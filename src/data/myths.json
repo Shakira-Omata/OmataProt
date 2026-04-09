@@ -1,0 +1,77 @@
+[
+  {
+    "id": "m1",
+    "myth": "You can't get pregnant the first time you have sex.",
+    "fact": "You can get pregnant any time you have unprotected sex, even the very first time. Using contraception and condoms is essential for prevention."
+  },
+  {
+    "id": "m2",
+    "myth": "Contraceptives make you infertile.",
+    "fact": "Most contraceptives are reversible and do not cause long-term infertility. Once you stop using them, your fertility returns to its natural state."
+  },
+  {
+    "id": "m3",
+    "myth": "Only women need to worry about SRHR.",
+    "fact": "SRHR is for everyone. Men need to understand and participate in reproductive health, including STI prevention and supporting partners."
+  },
+  {
+    "id": "m4",
+    "myth": "You can tell if someone has an STI just by looking at them.",
+    "fact": "A lot of STIs, like HIV and Chlamydia, often show no visible symptoms. The only way to know for sure is to get tested."
+  },
+  {
+    "id": "m5",
+    "myth": "Standing up or washing after sex prevents pregnancy.",
+    "fact": "Washing or standing up doesn't stop sperm from reaching an egg. Only reliable contraceptives or barriers like condoms work."
+  },
+  {
+    "id": "m6",
+    "myth": "People with disabilities aren't interested in sex.",
+    "fact": "Sexuality is a natural part of human life for everyone, regardless of physical or cognitive ability."
+  },
+  {
+    "id": "m7",
+    "myth": "Abortion is always illegal in Kenya.",
+    "fact": "The Kenyan constitution allows for abortion in specific cases, like when the health or life of the mother is at risk or in emergencies."
+  },
+  {
+    "id": "m8",
+    "myth": "Natural methods like withdrawal are 100% effective.",
+    "fact": "Methods like withdrawal have high failure rates. Using modern contraceptives is much more reliable for preventing pregnancy."
+  },
+  {
+    "id": "m9",
+    "myth": "Periods are dirty or a curse.",
+    "fact": "Menstruation is a healthy, natural biological process and not a sign of being 'dirty' or 'unclean'."
+  },
+  {
+    "id": "m10",
+    "myth": "Young people shouldn't talk about sex.",
+    "fact": "Open and honest talk helps young people make safer choices and build healthier relationships based on respect and consent."
+  },
+  {
+    "id": "m11",
+    "myth": "Condoms are only for people with many partners.",
+    "fact": "Condoms are for anyone who wants to prevent STIs and pregnancy, regardless of how many partners they have."
+  },
+  {
+    "id": "m12",
+    "myth": "STIs only happen to 'bad' people.",
+    "fact": "Anyone who is sexually active can get an STI. It has nothing to do with your character or morality."
+  },
+  {
+    "id": "m13",
+    "myth": "SRHR is only about sex.",
+    "fact": "SRHR also includes things like emotional well-being, healthy relationships, and making decisions about your future."
+  },
+  {
+    "id": "m14",
+    "myth": "Pregnancy is always safe and easy.",
+    "fact": "Pregnancy can have complications. Regular checkups and prenatal care are important for the health of both mother and baby."
+  },
+  {
+    "id": "m15",
+    "myth": "Consent is only needed the first time.",
+    "fact": "Consent is needed every single time you're intimate, even if you are in a long-term relationship or married."
+  }
+]

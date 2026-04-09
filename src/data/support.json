@@ -1,0 +1,122 @@
+[
+  {
+    "id": "s1",
+    "name": "Youth-Friendly SRHR Clinic",
+    "type": "Health Service",
+    "description": "Safe, confidential, and judgment-free SRHR services for youth in Nairobi.",
+    "contact": "0800-123-456",
+    "inclusive": true
+  },
+  {
+    "id": "s2",
+    "name": "Kenya Mental Health Hotline",
+    "type": "Mental Health",
+    "description": "Free, 24/7 counseling and emotional support for all young people in Kenya.",
+    "contact": "1192",
+    "inclusive": true
+  },
+  {
+    "id": "s3",
+    "name": "Disability SRHR Support Networking",
+    "type": "Advocacy",
+    "description": "Connecting young people with disabilities to accessible SRHR information and resources.",
+    "contact": "0700-000-000",
+    "inclusive": true
+  },
+  {
+    "id": "s4",
+    "name": "National GBV Helpline",
+    "type": "Emergency",
+    "description": "Immediate help for those experiencing gender-based violence or abuse.",
+    "contact": "1195",
+    "inclusive": true
+  },
+  {
+    "id": "s5",
+    "name": "Childline Kenya",
+    "type": "Support",
+    "description": "Providing support and protection for children and teenagers across Kenya.",
+    "contact": "116",
+    "inclusive": true
+  },
+  {
+    "id": "s6",
+    "name": "Marie Stopes Kenya",
+    "type": "Health Service",
+    "description": "Comprehensive SRHR services, including family planning and safe abortion care.",
+    "contact": "0800-720-005",
+    "inclusive": true
+  },
+  {
+    "id": "s7",
+    "name": "Family Health Options Kenya (FHOK)",
+    "type": "Health Service",
+    "description": "Youth-focused sexual and reproductive health clinics across the country.",
+    "contact": "0722-123-456",
+    "inclusive": true
+  },
+  {
+    "id": "s8",
+    "name": "LVCT Health",
+    "type": "Health Service",
+    "description": "Testing and counseling for HIV and other STIs in a safe and supportive environment.",
+    "contact": "020-2699841",
+    "inclusive": true
+  },
+  {
+    "id": "s9",
+    "name": "Red Cross Kenya",
+    "type": "Emergency",
+    "description": "Emergency medical assistance and support during health crises.",
+    "contact": "1199",
+    "inclusive": true
+  },
+  {
+    "id": "s10",
+    "name": "Love Matters Kenya",
+    "type": "Information",
+    "description": "Youth-friendly online platform for sex, love, and relationship information.",
+    "contact": "lovematters.co.ke",
+    "inclusive": true
+  },
+  {
+    "id": "s11",
+    "name": "Nascop Kenya",
+    "type": "Government",
+    "description": "National AIDS and STI Control Programme, providing resources and guidance.",
+    "contact": "nascop.or.ke",
+    "inclusive": true
+  },
+  {
+    "id": "s12",
+    "name": "Youth Alive! Kenya",
+    "type": "NGO",
+    "description": "Empowering youth to lead healthy and productive lives through advocacy and SRHR.",
+    "contact": "youthalivekenya.org",
+    "inclusive": true
+  },
+  {
+    "id": "s13",
+    "name": "Kenya Network of Positive Youth",
+    "type": "Peer Support",
+    "description": "A network for young people living with HIV to share and support one another.",
+    "contact": "kenpoya.org",
+    "inclusive": true
+  },
+  {
+    "id": "s14",
+    "name": "Amnesty International Kenya",
+    "type": "Human Rights",
+    "description": "Advocating for the human rights of all people, including reproductive rights and dignity.",
+    "contact": "amnestykenya.org",
+    "inclusive": true
+  },
+  {
+    "id": "s15",
+    "name": "Wote Sawa",
+    "type": "Advocacy",
+    "description": "Promoting the rights and well-being of young women and girls in Kenya.",
+    "contact": "wotesawa.org",
+    "inclusive": true
+  }
+]
