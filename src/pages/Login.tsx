@@ -23,16 +23,16 @@ const Login: React.FC = () => {
    };
 
    return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50/50 p-6 animate-in fade-in duration-700">
-         <div className="w-full max-w-xl bg-white rounded-[3.5rem] shadow-2xl border-2 border-border p-8 md:p-16 space-y-10 relative overflow-hidden group">
+      <div className="min-h-screen flex items-center justify-center bg-background p-6 animate-in fade-in duration-700">
+         <div className="w-full max-w-xl bg-card rounded-[3.5rem] shadow-2xl border-2 border-border p-8 md:p-16 space-y-10 relative overflow-hidden group">
 
             <div className="text-center space-y-4">
                <Link to="/" className="inline-flex items-center gap-3 mb-6">
                   <img src={logo4} alt="SalamaHub Logo" className="h-16 w-auto object-contain" />
                   <span className="text-2xl font-black text-primary italic">SalamaHub</span>
                </Link>
-               <h1 className="text-4xl font-black text-slate-900 leading-tight">Welcome Back</h1>
-               <p className="text-lg text-slate-500 font-medium leading-relaxed">
+               <h1 className="text-4xl font-black text-card-foreground leading-tight">Welcome Back</h1>
+               <p className="text-lg text-muted-foreground font-medium leading-relaxed">
                   Log in to your safe, private SRHR platform.
                </p>
             </div>
@@ -40,7 +40,7 @@ const Login: React.FC = () => {
             <form onSubmit={handleLogin} className="space-y-6">
                <div className="space-y-4">
                   <div className="flex flex-col gap-1.5">
-                     <label className="text-sm font-bold text-slate-900 ml-1">Email</label>
+                     <label className="text-sm font-bold text-card-foreground ml-1">Email</label>
                      <div className="relative group/field">
                         <input
                            type="text"
@@ -48,13 +48,13 @@ const Login: React.FC = () => {
                            required
                            value={identifier}
                            onChange={(e) => setIdentifier(e.target.value)}
-                           className="w-full h-12 pl-4 pr-11 rounded-full border border-slate-300 bg-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-slate-700 font-medium text-sm"
+                           className="w-full h-12 pl-4 pr-11 rounded-full border border-border bg-secondary focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-muted-foreground text-foreground font-medium text-sm"
                         />
-                        <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within/field:text-primary transition-colors" size={18} />
+                        <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground group-focus-within/field:text-primary transition-colors" size={18} />
                      </div>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                     <label className="text-sm font-bold text-slate-900 ml-1">Password</label>
+                     <label className="text-sm font-bold text-card-foreground ml-1">Password</label>
                      <div className="relative group/field">
                         <input
                            type={showPassword ? "text" : "password"}
@@ -62,12 +62,12 @@ const Login: React.FC = () => {
                            required
                            value={password}
                            onChange={(e) => setPassword(e.target.value)}
-                           className="w-full h-12 pl-4 pr-11 rounded-full border border-slate-300 bg-slate-100 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-slate-700 font-bold tracking-widest text-sm"
+                           className="w-full h-12 pl-4 pr-11 rounded-full border border-border bg-secondary focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-muted-foreground text-foreground font-bold tracking-widest text-sm"
                         />
                         <button
                            type="button"
                            onClick={() => setShowPassword(!showPassword)}
-                           className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-700 group-focus-within/field:text-primary transition-colors focus:outline-none"
+                           className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground group-focus-within/field:text-primary transition-colors focus:outline-none"
                         >
                            {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
                         </button>
@@ -77,7 +77,7 @@ const Login: React.FC = () => {
 
                <div className="flex items-center justify-between px-2">
                   <a href="#" className="text-sm font-bold text-red-500 hover:text-red-600 hover:underline">Forgot Password?</a>
-                  <label className="flex items-center gap-2 text-sm font-bold text-slate-600 cursor-pointer">
+                  <label className="flex items-center gap-2 text-sm font-bold text-muted-foreground cursor-pointer">
                      <input type="checkbox" className="w-4 h-4 rounded border-2 border-border text-primary focus:ring-primary" />
                      Remember me
                   </label>
@@ -90,12 +90,12 @@ const Login: React.FC = () => {
 
             <div className="relative pt-4 pb-2">
                <div className="relative flex justify-center text-sm font-medium">
-                  <span className="bg-transparent px-4 text-slate-800">Or</span>
+                  <span className="bg-transparent px-4 text-foreground">Or</span>
                </div>
             </div>
 
             <div className="grid grid-cols-1 gap-4">
-               <button onClick={handleGoogleLogin} type="button" disabled={isLoading} className="h-14 rounded-full border border-border bg-slate-50/50 flex items-center justify-center gap-3 font-bold text-slate-700 hover:bg-slate-100 transition-colors shadow-sm disabled:opacity-70 disabled:pointer-events-none">
+               <button onClick={handleGoogleLogin} type="button" disabled={isLoading} className="h-14 rounded-full border border-border bg-secondary/50 flex items-center justify-center gap-3 font-bold text-secondary-foreground hover:bg-secondary transition-colors shadow-sm disabled:opacity-70 disabled:pointer-events-none">
                   <svg className="w-6 h-6" viewBox="0 0 24 24">
                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
@@ -107,7 +107,7 @@ const Login: React.FC = () => {
             </div>
 
             <div className="text-center pt-6">
-               <p className="text-slate-500 font-bold text-lg">
+               <p className="text-muted-foreground font-bold text-lg">
                   New to SalamaHub? <Link to="/signup" className="text-primary hover:underline underline-offset-4 decoration-2">Create an account</Link>
                </p>
             </div>

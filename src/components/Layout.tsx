@@ -18,6 +18,7 @@ import {
 import { useAccessibility } from '../context/AccessibilityContext';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import logo4 from '../assets/logo4.png';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -42,12 +43,12 @@ const NavItem = ({ to, icon: Icon, label, onClick }: { to: string, icon: any, la
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const { 
-    textSize, 
-    setTextSize, 
-    isHighContrast, 
-    setIsHighContrast, 
-    isDarkMode, 
+  const {
+    textSize,
+    setTextSize,
+    contrastMode,
+    setContrastMode,
+    isDarkMode,
     setIsDarkMode,
     isEasyRead,
     setIsEasyRead,
@@ -62,7 +63,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       {/* Sidebar Desktop */}
       <aside className="hidden lg:flex flex-col w-64 border-r bg-card sticky top-0 h-screen p-4">
         <Link to="/" className="flex items-center gap-2 px-2 mb-8">
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold italic">S</div>
+          <img src={logo4} alt="SalamaHub Logo" className="h-12 w-auto object-contain" />
           <span className="text-xl font-bold tracking-tight text-primary">SalamaHub</span>
         </Link>
 
@@ -96,16 +97,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 </button>
               ))}
             </div>
-            <button
-              onClick={() => setIsHighContrast(!isHighContrast)}
-              className={cn(
-                "w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm border transition-all",
-                isHighContrast ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
-              )}
-            >
-              Contrast Mode
-              <div className={cn("w-4 h-4 rounded-full border border-current", isHighContrast ? "bg-white" : "bg-black")} />
-            </button>
+            <div className="space-y-2">
+               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Contrast Mode</p>
+               <div className="grid grid-cols-2 gap-2">
+                 <button onClick={() => setContrastMode('default')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
+                 <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
+                 <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
+                 <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
+               </div>
+            </div>
             <button
               onClick={() => setIsEasyRead(!isEasyRead)}
               className={cn(
@@ -147,7 +147,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
       <div className="flex-1 flex flex-col min-w-0">
         <header className="lg:hidden h-16 border-b bg-card flex items-center justify-between px-4 sticky top-0 z-40">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-primary-foreground font-bold italic">S</div>
+            <img src={logo4} alt="SalamaHub Logo" className="h-10 w-auto object-contain" />
             <span className="text-lg font-bold tracking-tight text-primary">SalamaHub</span>
           </Link>
           <button onClick={toggleSidebar} className="p-2 hover:bg-secondary rounded-lg">
@@ -194,13 +194,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     </button>
                   ))}
                 </div>
-                <button
-                  onClick={() => setIsHighContrast(!isHighContrast)}
-                  className="w-full flex items-center justify-between h-12 px-4 rounded-xl font-medium bg-secondary"
-                >
-                  High Contrast Mode
-                  <div className={cn("w-5 h-5 rounded-full border border-black", isHighContrast ? "bg-yellow-400" : "bg-white")} />
-                </button>
+                <div className="space-y-2">
+                   <p className="text-sm font-semibold text-primary uppercase tracking-wider">Contrast Mode</p>
+                   <div className="grid grid-cols-2 gap-2">
+                     <button onClick={() => setContrastMode('default')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
+                     <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
+                     <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
+                     <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
+                   </div>
+                </div>
               </div>
             </div>
           </div>

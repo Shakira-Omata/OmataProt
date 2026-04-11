@@ -11,10 +11,10 @@ const Myths: React.FC = () => {
         <div className="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto shadow-sm">
            <HelpCircle size={40} />
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight">
           Questions & <span className="text-primary italic">Myths</span>
         </h1>
-        <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
           Common questions and misunderstandings about SRHR, answered with facts and supportive language.
         </p>
       </section>
@@ -24,7 +24,7 @@ const Myths: React.FC = () => {
           <div 
             key={item.id} 
             className={`rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
-              openIndex === index ? "border-primary bg-card shadow-xl scale-[1.02]" : "border-border/60 hover:border-border bg-slate-50"
+              openIndex === index ? "border-primary bg-card shadow-xl scale-[1.02]" : "border-border/60 hover:border-border bg-secondary/30"
             }`}
           >
             <button 
@@ -32,12 +32,12 @@ const Myths: React.FC = () => {
               className="w-full p-8 md:p-10 flex items-center justify-between text-left group"
             >
               <div className="flex items-center gap-6">
-                 <div className="w-12 h-12 rounded-2xl bg-slate-200 group-hover:bg-primary/20 flex items-center justify-center text-slate-500 group-hover:text-primary transition-colors">
+                 <div className="w-12 h-12 rounded-2xl border border-border bg-secondary group-hover:bg-primary/20 flex items-center justify-center text-muted-foreground group-hover:text-primary transition-colors">
                     <HelpCircle size={24} />
                  </div>
-                 <h3 className="text-xl md:text-2xl font-bold text-slate-800 leading-snug">{item.myth}</h3>
+                 <h3 className="text-xl md:text-2xl font-bold text-card-foreground leading-snug">{item.myth}</h3>
               </div>
-              {openIndex === index ? <ChevronUp size={28} className="text-primary" /> : <ChevronDown size={28} className="text-slate-400 group-hover:text-slate-600" />}
+              {openIndex === index ? <ChevronUp size={28} className="text-primary" /> : <ChevronDown size={28} className="text-muted-foreground group-hover:text-foreground" />}
             </button>
             
             {openIndex === index && (
@@ -46,7 +46,7 @@ const Myths: React.FC = () => {
                    <div className="flex items-center gap-3 text-primary font-black uppercase tracking-widest text-xs">
                       <CheckCircle2 size={18} /> The Fact
                    </div>
-                   <p className="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
+                   <p className="text-lg md:text-xl text-card-foreground leading-relaxed font-medium">
                      {item.fact}
                    </p>
                 </div>

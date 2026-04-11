@@ -19,6 +19,7 @@ function cn(...inputs: ClassValue[]) {
 }
 import topicsData from '../data/topics.json';
 import quizData from '../data/quiz.json';
+import tipsData from '../data/tips.json';
 import { useAccessibility } from '../context/AccessibilityContext';
 
 // Import all hero images
@@ -33,12 +34,17 @@ import hero7 from '../assets/Accessible design for all users.png';
 const heroImages = [hero1, hero2, hero3, hero4, hero5, hero6, hero7];
 
 const Home: React.FC = () => {
-  const { isEasyRead, setIsEasyRead, isAudioEnabled, setIsAudioEnabled, isHighContrast, setIsHighContrast } = useAccessibility();
+  const { isEasyRead, setIsEasyRead, isAudioEnabled, setIsAudioEnabled, contrastMode, setContrastMode } = useAccessibility();
   const [currentHero, setCurrentHero] = React.useState(0);
   const featuredTopics = topicsData.slice(0, 3);
 
+  const dailyTip = React.useMemo(() => {
+    const dayIndex = Math.floor(Date.now() / 86400000);
+    return tipsData[dayIndex % tipsData.length];
+  }, []);
+
   // Quiz State
-  const [currentQuizIdx, setCurrentQuizIdx] = React.useState(0);
+  const [currentQuizIdx, setCurrentQuizIdx] = React.useState(() => Math.floor(Math.random() * quizData.length));
   const [selectedOption, setSelectedOption] = React.useState<number | null>(null);
   const [isCorrect, setIsCorrect] = React.useState<boolean | null>(null);
   const [showNext, setShowNext] = React.useState(false);
@@ -56,7 +62,10 @@ const Home: React.FC = () => {
   };
 
   const handleNextQuestion = () => {
-    const nextIdx = (currentQuizIdx + 1) % quizData.length;
+    let nextIdx = Math.floor(Math.random() * quizData.length);
+    while (nextIdx === currentQuizIdx && quizData.length > 1) {
+      nextIdx = Math.floor(Math.random() * quizData.length);
+    }
     setCurrentQuizIdx(nextIdx);
     setSelectedOption(null);
     setIsCorrect(null);
@@ -104,10 +113,10 @@ const Home: React.FC = () => {
             <span className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse" />
             Your Safe Space
           </div>
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-slate-900 leading-[1.05] tracking-tight">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-foreground leading-[1.05] tracking-tight">
             SRHR Education <br /><span className="text-primary italic font-serif">For All</span>
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Welcome to SalamaHub, your judgment-free home for accurate, inclusive, and rights-based sexual health information in Kenya.
           </p>
           <div className="flex flex-wrap justify-center gap-6 pt-4">
@@ -123,17 +132,17 @@ const Home: React.FC = () => {
 
       {/* Interactive Quiz Section */}
       <section className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-        <div className="bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 overflow-hidden relative group border border-slate-800 shadow-2xl">
-          <div className="absolute top-0 right-0 p-8 text-primary/5 rotate-12 group-hover:rotate-0 transition-transform duration-700 pointer-events-none">
+        <div className="bg-card text-card-foreground rounded-[2.5rem] p-8 md:p-12 flex flex-col lg:flex-row gap-12 overflow-hidden relative group border border-border shadow-2xl">
+          <div className="absolute top-0 right-0 p-8 text-primary/10 rotate-12 group-hover:rotate-0 transition-transform duration-700 pointer-events-none">
             <HelpCircle size={240} />
           </div>
 
           <div className="flex-1 space-y-6 relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 text-primary rounded-full text-xs font-bold uppercase tracking-widest">
-              Quick Quiz &bull; Question {currentQuizIdx + 1}
+              Quick Quiz
             </div>
             <h3 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight">{currentQuiz.question}</h3>
-            <p className="text-slate-400 text-lg">Test your knowledge and learn something new today!</p>
+            <p className="text-muted-foreground text-lg">Test your knowledge and learn something new today!</p>
 
             {showNext && (
               <button
@@ -161,15 +170,15 @@ const Home: React.FC = () => {
                   "text-left p-6 rounded-[1.5rem] border-2 transition-all font-bold text-lg",
                   selectedOption === i
                     ? isCorrect
-                      ? "bg-primary/20 border-primary text-white shadow-[0_0_20px_rgba(255,107,107,0.3)]"
-                      : "bg-red-500/10 border-red-500 text-red-400"
-                    : "bg-slate-800/50 border-slate-700 hover:border-slate-500 hover:bg-slate-800"
+                      ? "bg-primary/20 border-primary text-foreground shadow-[0_0_20px_rgba(255,107,107,0.3)]"
+                      : "bg-destructive/10 border-destructive text-destructive"
+                    : "bg-secondary border-border hover:border-primary/50 hover:bg-secondary/50"
                 )}
               >
                 <div className="flex items-center gap-4">
                   <span className={cn(
                     "w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm",
-                    selectedOption === i && isCorrect ? "bg-primary border-primary " : "border-slate-600"
+                    selectedOption === i && isCorrect ? "bg-primary border-primary text-white" : "border-border"
                   )}>
                     {String.fromCharCode(65 + i)}
                   </span>
@@ -185,7 +194,7 @@ const Home: React.FC = () => {
       <section className="space-y-8">
         <div className="flex items-end justify-between px-2">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-900">Featured Topics</h2>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground">Featured Topics</h2>
             <p className="text-muted-foreground">Essential learning for every young person.</p>
           </div>
           <Link to="/learn" className="text-primary font-bold flex items-center gap-2 group">
@@ -210,13 +219,13 @@ const Home: React.FC = () => {
 
       {/* Accessibility Support Section */}
       <section className="grid lg:grid-cols-2 gap-8 items-stretch">
-        <div className="bg-sage-100 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between border border-sage-200">
+        <div className="bg-secondary rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-between border border-border">
           <div className="space-y-6">
-            <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-sage-600 shadow-sm">
+            <div className="w-16 h-16 rounded-2xl bg-card flex items-center justify-center text-primary shadow-sm border border-border">
               <Accessibility size={32} />
             </div>
-            <h3 className="text-3xl font-bold text-slate-900 leading-tight">Inclusive Access for Everyone</h3>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <h3 className="text-3xl font-bold text-foreground leading-tight">Inclusive Access for Everyone</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed">
               We've built SalamaHub to be used by all young people, including those with disabilities. Customize your experience for maximum comfort.
             </p>
           </div>
@@ -225,26 +234,26 @@ const Home: React.FC = () => {
               onClick={() => setIsAudioEnabled(!isAudioEnabled)}
               className={cn(
                 "px-4 py-2 rounded-xl border font-bold text-sm transition-all",
-                isAudioEnabled ? "bg-primary text-white border-primary shadow-md scale-105" : "bg-white border-sage-200 text-slate-700 hover:border-primary"
+                isAudioEnabled ? "bg-primary text-white border-primary shadow-md scale-105" : "bg-card border-border text-foreground hover:border-primary"
               )}
             >
               Audio Support {isAudioEnabled ? "✓" : ""}
             </button>
-            <button className="px-4 py-2 rounded-xl bg-white border border-sage-200 font-bold text-sm opacity-50 cursor-not-allowed">Large Text</button>
+            <button className="px-4 py-2 rounded-xl bg-card border border-border font-bold text-sm opacity-50 cursor-not-allowed text-foreground">Large Text</button>
             <button
-              onClick={() => setIsHighContrast(!isHighContrast)}
+              onClick={() => setContrastMode(contrastMode === 'default' ? 'yellow' : 'default')}
               className={cn(
                 "px-4 py-2 rounded-xl border font-bold text-sm transition-all",
-                isHighContrast ? "bg-primary text-white border-primary shadow-md scale-105" : "bg-white border-sage-200 text-slate-700 hover:border-primary"
+                contrastMode !== 'default' ? "bg-primary text-white border-primary shadow-md scale-105" : "bg-card border-border text-foreground hover:border-primary"
               )}
             >
-              High Contrast {isHighContrast ? "✓" : ""}
+              High Contrast {contrastMode !== 'default' ? "✓" : ""}
             </button>
             <button
               onClick={() => setIsEasyRead(!isEasyRead)}
               className={cn(
                 "px-4 py-2 rounded-xl border font-bold text-sm transition-all",
-                isEasyRead ? "bg-primary text-white border-primary shadow-md scale-105" : "bg-white border-sage-200 text-slate-700 hover:border-primary"
+                isEasyRead ? "bg-primary text-white border-primary shadow-md scale-105" : "bg-card border-border text-foreground hover:border-primary"
               )}
             >
               Easy Read {isEasyRead ? "✓" : ""}
@@ -252,12 +261,12 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-slate-50 rounded-[2.5rem] p-8 md:p-10 border border-slate-200 flex flex-col justify-center items-center text-center space-y-6">
-          <div className="w-16 h-16 rounded-2xl bg-white flex items-center justify-center text-primary shadow-sm">
+        <div className="bg-card rounded-[2.5rem] p-8 md:p-10 border border-border flex flex-col justify-center items-center text-center space-y-6 shadow-sm">
+          <div className="w-16 h-16 rounded-2xl bg-secondary flex items-center justify-center text-primary shadow-sm">
             <Lightbulb size={32} />
           </div>
-          <h3 className="text-2xl font-bold">Daily SRHR Tip</h3>
-          <p className="text-slate-600 italic">"Remember: Consent is not a one-time event. It's an ongoing process of respect and communication."</p>
+          <h3 className="text-2xl font-bold text-foreground">Daily SRHR Tip</h3>
+          <p className="text-muted-foreground italic">"{dailyTip}"</p>
         </div>
       </section>
 

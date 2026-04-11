@@ -7,12 +7,13 @@ function cn(...inputs: ClassValue[]) {
 }
 
 type TextSize = 'sm' | 'base' | 'lg' | 'xl' | '2xl';
+type ContrastMode = 'default' | 'yellow' | 'cyan' | 'sepia';
 
 interface AccessibilityContextType {
   textSize: TextSize;
   setTextSize: (size: TextSize) => void;
-  isHighContrast: boolean;
-  setIsHighContrast: (isHigh: boolean) => void;
+  contrastMode: ContrastMode;
+  setContrastMode: (mode: ContrastMode) => void;
   isDarkMode: boolean;
   setIsDarkMode: (isDark: boolean) => void;
   isEasyRead: boolean;
@@ -25,7 +26,7 @@ const AccessibilityContext = createContext<AccessibilityContextType | undefined>
 
 export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [textSize, setTextSize] = useState<TextSize>('base');
-  const [isHighContrast, setIsHighContrast] = useState(false);
+  const [contrastMode, setContrastMode] = useState<ContrastMode>('default');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isEasyRead, setIsEasyRead] = useState(false);
   const [isAudioEnabled, setIsAudioEnabled] = useState(false);
@@ -38,12 +39,12 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     });
     document.documentElement.classList.add(`text-size-${textSize}`);
 
-    // Apply high contrast
-    if (isHighContrast) {
-      document.documentElement.classList.add('high-contrast');
-    } else {
-      document.documentElement.classList.remove('high-contrast');
-    }
+    // Apply contrast modes
+    const modes = ['high-contrast-yellow', 'high-contrast-cyan', 'sepia-mode'];
+    modes.forEach(mode => document.documentElement.classList.remove(mode));
+    if (contrastMode === 'yellow') document.documentElement.classList.add('high-contrast-yellow');
+    if (contrastMode === 'cyan') document.documentElement.classList.add('high-contrast-cyan');
+    if (contrastMode === 'sepia') document.documentElement.classList.add('sepia-mode');
 
     // Apply dark mode
     if (isDarkMode) {
@@ -51,14 +52,14 @@ export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [textSize, isHighContrast, isDarkMode]);
+  }, [textSize, contrastMode, isDarkMode]);
 
   return (
     <AccessibilityContext.Provider value={{ 
       textSize, 
       setTextSize, 
-      isHighContrast, 
-      setIsHighContrast, 
+      contrastMode, 
+      setContrastMode, 
       isDarkMode, 
       setIsDarkMode,
       isEasyRead,

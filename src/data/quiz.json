@@ -163,5 +163,280 @@
       "By guessing"
     ],
     "answer": 1
+  },
+  {
+    "id": "q16",
+    "question": "What should you do if you experience or witness Gender-Based Violence (GBV)?",
+    "options": [
+      "Ignore it",
+      "Report it to a trusted adult or authority",
+      "Blame the victim",
+      "Keep it a secret"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q17",
+    "question": "Can young people with disabilities access SRHR services?",
+    "options": [
+      "No, they don't need it",
+      "Yes, they have the exact same rights to accessible services",
+      "Only if accompanied by parents",
+      "Only at special hospitals"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q18",
+    "question": "What is the most effective way to protect yourself from online exploitation?",
+    "options": [
+      "Sharing your passwords with your closest friends",
+      "Trusting everyone online who is friendly",
+      "Keeping personal information private and reporting suspicious behavior",
+      "Meeting online friends alone to be safe"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "q19",
+    "question": "Using two condoms at once provides double protection.",
+    "options": [
+      "True, it is significantly safer",
+      "False, the friction can cause them to tear and break",
+      "True, but it is uncomfortable",
+      "False, it only works for STIs not pregnancy"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q20",
+    "question": "What is puberty?",
+    "options": [
+      "A treatable condition",
+      "A period of rapid physical and emotional development",
+      "Something that only happens to boys",
+      "A specific diet plan"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q21",
+    "question": "What does HIV stand for?",
+    "options": [
+      "Human Immunodeficiency Virus",
+      "Health Immunity Virus",
+      "Human Infection Virus",
+      "Health Immunization Vector"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "q22",
+    "question": "Can you get an STI from sharing a toilet seat?",
+    "options": [
+      "Yes, always",
+      "No, STIs are mainly transmitted through sexual contact or bodily fluids",
+      "Only in public restrooms",
+      "Only if the seat is wet"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q23",
+    "question": "What is a contraceptive implant?",
+    "options": [
+      "A pill you take daily",
+      "A small rod inserted under the skin of the arm to prevent pregnancy",
+      "A type of special condom",
+      "A major surgical procedure"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q24",
+    "question": "When should Emergency contraception (the morning-after pill) be used?",
+    "options": [
+      "As a regular daily birth control",
+      "Only as a backup method after unprotected sex or contraceptive failure",
+      "Before having sex",
+      "Every single week"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q25",
+    "question": "How can you maintain healthy menstrual hygiene?",
+    "options": [
+      "Changing sanitary products regularly and washing hands",
+      "Only using products once a day",
+      "Ignoring hygiene during your period",
+      "Taking extremely cold showers"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "q26",
+    "question": "Are Sexually Transmitted Infections (STIs) treatable?",
+    "options": [
+      "No, none of them can be treated",
+      "Yes, all STIs are easily curable",
+      "Yes, many are curable and others are manageable with treatment",
+      "Only if you catch them within 2 hours"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "q27",
+    "question": "What is the legal age of consent for sex in Kenya?",
+    "options": [
+      "14",
+      "16",
+      "18",
+      "21"
+    ],
+    "answer": 2
+  },
+  {
+    "id": "q28",
+    "question": "Does anyone have the right to force you into marriage against your will?",
+    "options": [
+      "Yes, if they are older",
+      "No, forced marriage is a violation of human rights and is illegal",
+      "Yes, but only your parents",
+      "Only if they offer a dowry"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q29",
+    "question": "Should you routinely wash the inside of your vagina with soap (douching)?",
+    "options": [
+      "No, the vagina is naturally self-cleaning and soap can upset its balance",
+      "Yes, every day",
+      "Only after sex",
+      "Yes, with highly scented soaps"
+    ],
+    "answer": 0
+  },
+  {
+    "id": "q30",
+    "question": "Is it completely impossible to get pregnant if you have sex during your period?",
+    "options": [
+      "Yes, it is physically impossible",
+      "No, pregnancy is less likely but still very much possible",
+      "Yes, if you drink lots of water",
+      "No, but only on the first day"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q31",
+    "question": "Is masturbation physically harmful or unhealthy?",
+    "options": [
+      "Yes, it can cause blindness",
+      "No, it is a normal and safe way to explore your body and sexuality",
+      "Yes, it stunts your growth",
+      "Only if you do it often"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q32",
+    "question": "Do LGBTQ+ individuals have the same Sexual and Reproductive Health Rights as everyone else?",
+    "options": [
+      "No, they have restricted rights",
+      "Yes, human rights apply universally to all people regardless of gender or sexuality",
+      "Only if they are adults",
+      "Only in certain countries"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q33",
+    "question": "What is an IUD (Intrauterine Device)?",
+    "options": [
+      "A device worn over the penis",
+      "A small device placed in the uterus by a doctor to prevent pregnancy",
+      "A type of birth control pill",
+      "A tracking app for menstruation"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q34",
+    "question": "Can HIV be transmitted through mosquito bites?",
+    "options": [
+      "Yes, it is highly contagious this way",
+      "No, the virus does not survive in or get transmitted by mosquitoes",
+      "Only in tropical climates",
+      "Only if the mosquito bit someone with HIV immediately before"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q35",
+    "question": "If someone is highly intoxicated (drunk), can they legally and ethically give sexual consent?",
+    "options": [
+      "Yes, if they can still talk",
+      "No, a heavily intoxicated person cannot provide valid, informed consent",
+      "Yes, but only verbally",
+      "Only if they signed a paper beforehand"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q36",
+    "question": "Is it normal for a young person's menstrual cycle to occasionally be irregular?",
+    "options": [
+      "No, it indicates a severe medical emergency",
+      "Yes, it is common especially during early puberty, high stress, or illness",
+      "Only if you eat too much sugar",
+      "No, it must be exactly 28 days every time"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q37",
+    "question": "Can wearing very tight clothing cause a Sexually Transmitted Infection (STI)?",
+    "options": [
+      "Yes, by creating too much heat",
+      "No, STIs are infections that require contact with another person's bodily fluids",
+      "Only for men",
+      "Yes, if worn for more than 5 days"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q38",
+    "question": "Does \"pulling out\" (withdrawal method) guarantee you will not get pregnant?",
+    "options": [
+      "Yes, if done quickly enough",
+      "No, pre-ejaculate fluid can still contain sperm and lead to pregnancy",
+      "Yes, it is the safest method",
+      "No, unless you take a cold shower after"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q39",
+    "question": "Does male circumcision completely eliminate the risk of getting HIV?",
+    "options": [
+      "Yes, circumcised males are 100% immune",
+      "No, it reduces the risk significantly but does NOT offer complete protection",
+      "Yes, but only against certain variants",
+      "No, it actually increases the risk"
+    ],
+    "answer": 1
+  },
+  {
+    "id": "q40",
+    "question": "Where should you go if you need PEP (Post-Exposure Prophylaxis) to prevent HIV after a potential exposure?",
+    "options": [
+      "Buy it from any local supermarket",
+      "A clinic or hospital within 72 hours of the exposure",
+      "Wait two weeks and see a doctor",
+      "You can just sleep it off"
+    ],
+    "answer": 1
   }
 ]

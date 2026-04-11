@@ -9,7 +9,7 @@ const Rights: React.FC = () => {
         <div className="inline-flex items-center gap-3 px-4 py-2 bg-primary/10 text-primary rounded-2xl font-bold uppercase tracking-widest text-sm">
           <Gavel size={20} /> Legal Protection
         </div>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-foreground leading-tight">
           Know Your <span className="text-primary">Rights</span>
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
@@ -23,7 +23,7 @@ const Rights: React.FC = () => {
             <div className="w-14 h-14 rounded-2xl bg-secondary flex items-center justify-center text-primary mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-white transition-all duration-300">
                <ShieldCheck size={28} />
             </div>
-            <h3 className="text-2xl font-bold mb-4 text-slate-900 leading-snug">{right.title}</h3>
+            <h3 className="text-2xl font-bold mb-4 text-card-foreground leading-snug">{right.title}</h3>
             <p className="text-muted-foreground leading-relaxed text-lg flex-1">
               {right.content}
             </p>
