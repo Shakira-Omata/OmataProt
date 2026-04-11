@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, FileText, CheckCircle2, Accessibility, Info, FileStack, ArrowRight, Play } from 'lucide-react';
+import { Download, FileText, Accessibility, Info, FileStack, ArrowRight, Play } from 'lucide-react';
 import guides from '../data/guides.json';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Eye, EyeOff, User, ArrowRight, Github, Chrome } from 'lucide-react';
+import { Mail, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import logo4 from '../assets/logo4.png';
 

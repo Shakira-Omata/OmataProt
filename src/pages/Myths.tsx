@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, CheckCircle2, XCircle, ChevronDown, ChevronUp, Lightbulb, MessageCircle } from 'lucide-react';
+import { HelpCircle, CheckCircle2, ChevronDown, ChevronUp, Lightbulb, MessageCircle } from 'lucide-react';
 import myths from '../data/myths.json';
 
 const Myths: React.FC = () => {

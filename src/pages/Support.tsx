@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, MapPin, Globe, Clock, CheckCircle2, PhoneCall, ExternalLink, MessageSquare, Info } from 'lucide-react';
+import { Phone, MapPin, CheckCircle2, PhoneCall, ExternalLink, MessageSquare, Info } from 'lucide-react';
 import support from '../data/support.json';
 
 const Support: React.FC = () => {

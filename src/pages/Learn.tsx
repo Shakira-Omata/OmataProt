@@ -2,13 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { BookOpen, Search, ArrowRight, BookOpenCheck } from 'lucide-react';
 import topics from '../data/topics.json';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-
 const Learn: React.FC = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
 

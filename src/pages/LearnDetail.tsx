@@ -3,7 +3,6 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, 
   Share2, 
-  Download, 
   Bookmark, 
   Clock, 
   CheckCircle2,
@@ -11,8 +10,6 @@ import {
   ShieldCheck,
   MessageCircle,
   HelpCircle,
-  Volume2,
-  VolumeX,
   Play,
   Pause,
   ArrowRight

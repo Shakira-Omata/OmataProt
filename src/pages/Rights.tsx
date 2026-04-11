@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, ShieldAlert, ShieldCheck, Scale, Lock, Users, Gavel } from 'lucide-react';
+import { Shield, ShieldAlert, ShieldCheck, Lock, Gavel } from 'lucide-react';
 import rights from '../data/rights.json';
 
 const Rights: React.FC = () => {

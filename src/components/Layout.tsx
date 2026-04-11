@@ -48,8 +48,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     setTextSize,
     contrastMode,
     setContrastMode,
-    isDarkMode,
-    setIsDarkMode,
     isEasyRead,
     setIsEasyRead,
     isAudioEnabled,
