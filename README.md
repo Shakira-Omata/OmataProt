@@ -40,6 +40,21 @@ To run the platform locally, follow these steps:
 - `src/components/`: Reusable UI elements (Layout, Navbar, Sidebar).
 - `src/pages/`: Individual view components.
 
+## Deployment
+
+### Deploying to Vercel
+
+The easiest way to deploy this platform is via [Vercel](https://vercel.com):
+
+1. **GitHub Integration**: Push your code to a GitHub repository and import it into Vercel. Vercel will automatically detect the Vite configuration.
+2. **Vercel CLI**: Alternatively, you can deploy using the CLI:
+   ```bash
+   npm i -g vercel
+   vercel
+   ```
+
+**Note**: A `vercel.json` file is included in the root to handle client-side routing, ensuring that page refreshes on sub-routes (like `/learn`) work correctly.
+
 ## Disclaimer
 
 SalamaHub is for educational and support purposes only and is not a replacement for professional medical care. Always consult a healthcare provider for medical needs.
