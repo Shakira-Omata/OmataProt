@@ -1,4 +1,4 @@
-# SalamaHub - SRHR Digital Platform
+# SalamaHub: SRHR Digital Platform
 
 SalamaHub is a youth-friendly, inclusive, and judgment-free sexual and reproductive health and rights (SRHR) platform for young people in Kenya. It intentionally includes young people with disabilities and marginalized groups.
 
