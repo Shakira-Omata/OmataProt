@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import {
   Home,
   BookOpen,
@@ -13,12 +13,14 @@ import {
   X,
   User,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  ChevronDown
 } from 'lucide-react';
 import { useAccessibility } from '../context/AccessibilityContext';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import logo4 from '../assets/logo4.png';
+import topics from '../data/topics/index';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -40,6 +42,91 @@ const NavItem = ({ to, icon: Icon, label, onClick }: { to: string, icon: any, la
     <ChevronRight size={16} className={cn("ml-auto transition-transform group-hover:translate-x-1", "opacity-0 group-hover:opacity-100")} />
   </NavLink>
 );
+
+// Expandable Learn SRHR nav item with topic sub-links
+const LearnNavItem = ({ onSubItemClick }: { onSubItemClick?: () => void }) => {
+  const location = useLocation();
+  const isLearnActive = location.pathname.startsWith('/learn');
+  const [isOpen, setIsOpen] = useState(isLearnActive);
+
+  // Topic icons mapping
+  const getTopicIcon = (topicId: string) => {
+    const iconMap: Record<string, string> = {
+      'overview-rights': '🌍',
+      'puberty-adolescent-health': '🌸',
+      'menstrual-health': '🩸',
+      'sexual-health-protection': '❤️',
+      'pregnancy-parenthood': '🤰',
+      'mental-health-wellbeing': '🧠',
+      'relationships-support': '💑'
+    };
+    return iconMap[topicId] || '📚';
+  };
+
+  return (
+    <div>
+      {/* Main toggle button */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className={cn(
+          "w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group",
+          isLearnActive
+            ? "bg-primary text-primary-foreground shadow-md"
+            : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+        )}
+      >
+        <BookOpen size={20} className="shrink-0" />
+        <span className="font-medium">Learn SRHR</span>
+        <ChevronDown
+          size={16}
+          className={cn(
+            "ml-auto transition-transform duration-300",
+            isOpen ? "rotate-180" : ""
+          )}
+        />
+      </button>
+
+      {/* Section label and topic navigation cards */}
+      {isOpen && (
+        <div className="mt-3 ml-3">
+          {/* Section label */}
+          <div className="px-3 py-1 mb-3">
+            <span className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
+              Learn Topics
+            </span>
+          </div>
+
+          {/* Topic navigation cards */}
+          <div className="space-y-2">
+            {topics.map((topic) => {
+              const isActive = location.pathname === `/learn/${topic.id}`;
+              return (
+                <NavLink
+                  key={topic.id}
+                  to={`/learn/${topic.id}`}
+                  onClick={onSubItemClick}
+                  className={({ isActive: linkActive }) => cn(
+                    "flex items-center gap-3 p-3 rounded-xl text-sm font-medium transition-all duration-200 group",
+                    "bg-white border border-slate-100 shadow-sm hover:shadow-md",
+                    linkActive
+                      ? "bg-primary text-white shadow-lg border-primary"
+                      : "text-slate-700 hover:bg-blue-50 hover:border-blue-200 hover:border-l-4 hover:border-l-primary"
+                  )}
+                >
+                  <span className="text-lg flex-shrink-0">{getTopicIcon(topic.id)}</span>
+                  <span className="flex-1 leading-tight font-semibold">{topic.title}</span>
+                  <span className="text-slate-400 group-hover:text-slate-600 transition-colors text-lg">
+                    ›
+                  </span>
+                </NavLink>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -67,7 +154,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
         <nav className="flex-1 space-y-2 overflow-y-auto pr-2 custom-scrollbar">
           <NavItem to="/" icon={Home} label="Home" />
-          <NavItem to="/learn" icon={BookOpen} label="Learn SRHR" />
+          <LearnNavItem />
           <NavItem to="/rights" icon={Shield} label="Know Your Rights" />
           <NavItem to="/diverse" icon={Users} label="Diverse Corner" />
           <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" />
@@ -96,13 +183,13 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               ))}
             </div>
             <div className="space-y-2">
-               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Contrast Mode</p>
-               <div className="grid grid-cols-2 gap-2">
-                 <button onClick={() => setContrastMode('default')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
-                 <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
-                 <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
-                 <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
-               </div>
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Contrast Mode</p>
+              <div className="grid grid-cols-2 gap-2">
+                <button onClick={() => setContrastMode('default')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
+                <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
+                <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
+                <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
+              </div>
             </div>
             <button
               onClick={() => setIsEasyRead(!isEasyRead)}
@@ -169,7 +256,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </div>
               <nav className="flex-1 space-y-1 overflow-y-auto">
                 <NavItem to="/" icon={Home} label="Home" onClick={toggleSidebar} />
-                <NavItem to="/learn" icon={BookOpen} label="Learn SRHR" onClick={toggleSidebar} />
+                <LearnNavItem onSubItemClick={toggleSidebar} />
                 <NavItem to="/rights" icon={Shield} label="Know Your Rights" onClick={toggleSidebar} />
                 <NavItem to="/diverse" icon={Users} label="Diverse Corner" onClick={toggleSidebar} />
                 <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" onClick={toggleSidebar} />
@@ -193,13 +280,13 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   ))}
                 </div>
                 <div className="space-y-2">
-                   <p className="text-sm font-semibold text-primary uppercase tracking-wider">Contrast Mode</p>
-                   <div className="grid grid-cols-2 gap-2">
-                     <button onClick={() => setContrastMode('default')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
-                     <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
-                     <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
-                     <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
-                   </div>
+                  <p className="text-sm font-semibold text-primary uppercase tracking-wider">Contrast Mode</p>
+                  <div className="grid grid-cols-2 gap-2">
+                    <button onClick={() => setContrastMode('default')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
+                    <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
+                    <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
+                    <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
+                  </div>
                 </div>
               </div>
             </div>
