@@ -146,84 +146,87 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   return (
     <div className="flex min-h-screen bg-background">
       {/* Sidebar Desktop */}
-      <aside className="hidden lg:flex flex-col w-64 border-r bg-card sticky top-0 h-screen p-4">
-        <Link to="/" className="flex items-center gap-2 px-2 mb-8">
-          <img src={logo4} alt="SalamaHub Logo" className="h-12 w-auto object-contain" />
-          <span className="text-xl font-bold tracking-tight text-primary">SalamaHub</span>
-        </Link>
+      {/* Sidebar Desktop */}
+      <aside className="hidden lg:flex flex-col w-80 border-r bg-card sticky top-0 h-screen overflow-hidden">
+        <div className="flex-1 overflow-y-auto p-4 custom-scrollbar space-y-8">
+          <Link to="/" className="flex items-center gap-2 px-2">
+            <img src={logo4} alt="SalamaHub Logo" className="h-12 w-auto object-contain" />
+            <span className="text-xl font-bold tracking-tight text-primary">SalamaHub</span>
+          </Link>
 
-        <nav className="flex-1 space-y-2 overflow-y-auto pr-2 custom-scrollbar">
-          <NavItem to="/" icon={Home} label="Home" />
-          <LearnNavItem />
-          <NavItem to="/rights" icon={Shield} label="Know Your Rights" />
-          <NavItem to="/diverse" icon={Users} label="Diverse Corner" />
-          <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" />
-          <NavItem to="/support" icon={Phone} label="Get Support" />
-          <NavItem to="/guides" icon={Download} label="Guides & Tools" />
-          <NavItem to="/about" icon={Info} label="About Us" />
-        </nav>
+          <nav className="space-y-2">
+            <NavItem to="/" icon={Home} label="Home" />
+            <LearnNavItem />
+            <NavItem to="/rights" icon={Shield} label="Know Your Rights" />
+            <NavItem to="/diverse" icon={Users} label="Diverse Corner" />
+            <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" />
+            <NavItem to="/support" icon={Phone} label="Get Support" />
+            <NavItem to="/guides" icon={Download} label="Guides & Tools" />
+            <NavItem to="/about" icon={Info} label="About Us" />
+          </nav>
 
-        <div className="mt-auto pt-4 border-t space-y-4">
-          <div className="bg-secondary/50 rounded-2xl p-4 space-y-3">
-            <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-              Accessibility
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {(['sm', 'base', 'lg', 'xl'] as const).map(size => (
-                <button
-                  key={size}
-                  onClick={() => setTextSize(size)}
-                  className={cn(
-                    "w-8 h-8 rounded-lg text-xs font-bold border transition-all",
-                    textSize === size ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
-                  )}
-                >
-                  A{size === 'sm' ? '' : size.toUpperCase()}
-                </button>
-              ))}
-            </div>
-            <div className="space-y-2">
-              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Contrast Mode</p>
-              <div className="grid grid-cols-2 gap-2">
-                <button onClick={() => setContrastMode('default')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
-                <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
-                <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
-                <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-1.5 rounded border text-[10px] font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
+          <div className="pt-4 border-t space-y-6">
+            <div className="bg-secondary/50 rounded-2xl p-4 space-y-4">
+              <div className="flex items-center justify-between text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                Accessibility
               </div>
+              <div className="flex flex-wrap gap-2">
+                {(['sm', 'base', 'lg', 'xl'] as const).map(size => (
+                  <button
+                    key={size}
+                    onClick={() => setTextSize(size)}
+                    className={cn(
+                      "w-10 h-10 rounded-lg text-xs font-bold border transition-all",
+                      textSize === size ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
+                    )}
+                  >
+                    A{size === 'sm' ? '' : size.toUpperCase()}
+                  </button>
+                ))}
+              </div>
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Contrast Mode</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button onClick={() => setContrastMode('default')} className={cn("px-2 py-2 rounded border text-[10px] font-bold transition-all", contrastMode === 'default' ? "bg-primary text-primary-foreground border-primary" : "bg-card hover:bg-secondary")}>Default</button>
+                  <button onClick={() => setContrastMode('yellow')} className={cn("px-2 py-2 rounded border text-[10px] font-bold transition-all", contrastMode === 'yellow' ? "bg-yellow-400 text-black border-yellow-400" : "bg-black text-yellow-400 border-black hover:bg-zinc-900")}>Yellow/Black</button>
+                  <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-2 rounded border text-[10px] font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
+                  <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-2 rounded border text-[10px] font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsEasyRead(!isEasyRead)}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm border transition-all",
+                  isEasyRead ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
+                )}
+              >
+                Easy Read Mode
+                <div className={cn("w-4 h-4 rounded-full border border-current", isEasyRead ? "bg-white" : "bg-black")} />
+              </button>
+              <button
+                onClick={() => setIsAudioEnabled(!isAudioEnabled)}
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm border transition-all",
+                  isAudioEnabled ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
+                )}
+              >
+                Audio Support
+                <div className={cn("w-4 h-4 rounded-full border border-current", isAudioEnabled ? "bg-white" : "bg-black")} />
+              </button>
             </div>
-            <button
-              onClick={() => setIsEasyRead(!isEasyRead)}
-              className={cn(
-                "w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm border transition-all",
-                isEasyRead ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
-              )}
-            >
-              Easy Read Mode
-              <div className={cn("w-4 h-4 rounded-full border border-current", isEasyRead ? "bg-white" : "bg-black")} />
-            </button>
-            <button
-              onClick={() => setIsAudioEnabled(!isAudioEnabled)}
-              className={cn(
-                "w-full flex items-center justify-between px-3 py-2 rounded-xl text-sm border transition-all",
-                isAudioEnabled ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
-              )}
-            >
-              Audio Support
-              <div className={cn("w-4 h-4 rounded-full border border-current", isAudioEnabled ? "bg-white" : "bg-black")} />
-            </button>
-          </div>
 
-          <div className="flex items-center gap-3 p-2 bg-secondary/30 rounded-xl">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary">
-              <User size={20} />
+            <div className="flex items-center gap-3 p-3 bg-secondary/30 rounded-2xl">
+              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                <User size={24} />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold truncate">Guest User</p>
+                <p className="text-xs text-muted-foreground truncate">Welcome</p>
+              </div>
+              <Link to="/login" className="p-2 hover:bg-secondary rounded-lg text-muted-foreground">
+                <LogOut size={18} />
+              </Link>
             </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold truncate">Guest User</p>
-              <p className="text-xs text-muted-foreground truncate">Welcome</p>
-            </div>
-            <Link to="/login" className="p-2 hover:bg-secondary rounded-lg text-muted-foreground">
-              <LogOut size={18} />
-            </Link>
           </div>
         </div>
       </aside>

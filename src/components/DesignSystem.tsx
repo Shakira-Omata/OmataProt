@@ -2,6 +2,9 @@ import React, { ReactNode } from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+import { Volume2, VolumeX } from 'lucide-react';
+import { useAccessibility } from '../context/AccessibilityContext';
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -443,6 +446,7 @@ interface ContentSectionCardProps {
   children: ReactNode;
   className?: string;
   didYouKnow?: string;
+  speechText?: string;
 }
 
 export const ContentSectionCard: React.FC<ContentSectionCardProps> = ({
@@ -450,34 +454,83 @@ export const ContentSectionCard: React.FC<ContentSectionCardProps> = ({
   icon,
   children,
   className,
-  didYouKnow
-}) => (
-  <BaseCard className={cn("bg-white border-slate-200 shadow-sm", className)}>
-    <div className="p-6 md:p-8">
-      <div className="flex items-center gap-4 mb-6">
-        {icon && <span className="text-2xl">{icon}</span>}
-        <h3 className="text-xl md:text-2xl font-bold text-slate-900">
-          {title}
-        </h3>
-      </div>
+  didYouKnow,
+  speechText
+}) => {
+  const { isAudioEnabled } = useAccessibility();
+  const [isReading, setIsReading] = React.useState(false);
 
-      <div className="space-y-6">
-        {children}
+  const handleSpeak = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (isReading) {
+      window.speechSynthesis.cancel();
+      setIsReading(false);
+      return;
+    }
 
-        {didYouKnow && (
-          <InfoBox
-            variant="warning"
-            icon={<span className="text-xl">💡</span>}
-            title="Did You Know?"
-            className="mt-6"
-          >
-            {didYouKnow}
-          </InfoBox>
-        )}
+    const textToRead = speechText || `${title}. ${didYouKnow || ""}`;
+    // Fallback to title if no speechText provided, though we could try to extract from children
+    
+    const utterance = new SpeechSynthesisUtterance(textToRead);
+    utterance.onend = () => setIsReading(false);
+    utterance.onerror = () => setIsReading(false);
+    
+    window.speechSynthesis.cancel(); // Stop anything else
+    window.speechSynthesis.speak(utterance);
+    setIsReading(true);
+  };
+
+  React.useEffect(() => {
+    return () => {
+      if (isReading) window.speechSynthesis.cancel();
+    };
+  }, [isReading]);
+
+  return (
+    <BaseCard className={cn("bg-white border-slate-200 shadow-sm relative group", className)}>
+      <div className="p-6 md:p-8">
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center gap-4">
+            {icon && <span className="text-2xl">{icon}</span>}
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+              {title}
+            </h3>
+          </div>
+          
+          {isAudioEnabled && (
+            <button
+              onClick={handleSpeak}
+              className={cn(
+                "p-2 rounded-full transition-all",
+                isReading 
+                  ? "bg-blue-600 text-white shadow-lg scale-110" 
+                  : "bg-blue-50 text-blue-600 hover:bg-blue-100"
+              )}
+              title={isReading ? "Stop Reading" : "Listen to Section"}
+            >
+              {isReading ? <VolumeX size={20} /> : <Volume2 size={20} />}
+            </button>
+          )}
+        </div>
+
+        <div className="space-y-6">
+          {children}
+
+          {didYouKnow && (
+            <InfoBox
+              variant="warning"
+              icon={<span className="text-xl">💡</span>}
+              title="Did You Know?"
+              className="mt-6"
+            >
+              {didYouKnow}
+            </InfoBox>
+          )}
+        </div>
       </div>
-    </div>
-  </BaseCard>
-);
+    </BaseCard>
+  );
+};
 
 /* ==================== TRIMESTER CARD ==================== */
 

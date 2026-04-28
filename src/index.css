@@ -51,41 +51,41 @@
   /* Accessibility Contrast Modes */
   .high-contrast-yellow {
     --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --foreground: 60 100% 50%;
     --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --card-foreground: 60 100% 50%;
     --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover-foreground: 60 100% 50%;
     --primary: 60 100% 50%;
     --primary-foreground: 0 0% 0%;
     --secondary: 0 0% 0%;
     --secondary-foreground: 60 100% 50%;
     --muted: 0 0% 0%;
-    --muted-foreground: 0 0% 100%;
+    --muted-foreground: 60 100% 70%;
     --accent: 0 0% 0%;
     --accent-foreground: 60 100% 50%;
-    --border: 0 0% 100%;
-    --input: 0 0% 100%;
+    --border: 60 100% 50%;
+    --input: 60 100% 50%;
     --ring: 60 100% 50%;
   }
 
   .high-contrast-cyan {
     --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --foreground: 180 100% 50%;
     --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --card-foreground: 180 100% 50%;
     --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover-foreground: 180 100% 50%;
     --primary: 180 100% 50%;
     --primary-foreground: 0 0% 0%;
     --secondary: 0 0% 0%;
     --secondary-foreground: 180 100% 50%;
     --muted: 0 0% 0%;
-    --muted-foreground: 0 0% 100%;
+    --muted-foreground: 180 100% 70%;
     --accent: 0 0% 0%;
     --accent-foreground: 180 100% 50%;
-    --border: 0 0% 100%;
-    --input: 0 0% 100%;
+    --border: 180 100% 50%;
+    --input: 180 100% 50%;
     --ring: 180 100% 50%;
   }
 
@@ -102,6 +102,94 @@
   }
 }
 
+/* Global Overrides for High Contrast Visibility */
+.high-contrast-yellow *,
+.high-contrast-cyan * {
+  border-color: currentColor !important;
+}
+
+.high-contrast-yellow .text-white,
+.high-contrast-yellow [class*="text-slate-"],
+.high-contrast-yellow [class*="text-gray-"],
+.high-contrast-yellow [class*="text-zinc-"],
+.high-contrast-yellow [class*="text-neutral-"],
+.high-contrast-yellow [class*="text-stone-"],
+.high-contrast-yellow [class*="text-red-"],
+.high-contrast-yellow [class*="text-orange-"],
+.high-contrast-yellow [class*="text-amber-"],
+.high-contrast-yellow [class*="text-yellow-"],
+.high-contrast-yellow [class*="text-lime-"],
+.high-contrast-yellow [class*="text-green-"],
+.high-contrast-yellow [class*="text-emerald-"],
+.high-contrast-yellow [class*="text-teal-"],
+.high-contrast-yellow [class*="text-cyan-"],
+.high-contrast-yellow [class*="text-sky-"],
+.high-contrast-yellow [class*="text-blue-"],
+.high-contrast-yellow [class*="text-indigo-"],
+.high-contrast-yellow [class*="text-violet-"],
+.high-contrast-yellow [class*="text-purple-"],
+.high-contrast-yellow [class*="text-fuchsia-"],
+.high-contrast-yellow [class*="text-pink-"],
+.high-contrast-yellow [class*="text-rose-"] {
+  color: #ffff00 !important;
+}
+
+.high-contrast-cyan .text-white,
+.high-contrast-cyan [class*="text-slate-"],
+.high-contrast-cyan [class*="text-gray-"],
+.high-contrast-cyan [class*="text-zinc-"],
+.high-contrast-cyan [class*="text-neutral-"],
+.high-contrast-cyan [class*="text-stone-"],
+.high-contrast-cyan [class*="text-red-"],
+.high-contrast-cyan [class*="text-orange-"],
+.high-contrast-cyan [class*="text-amber-"],
+.high-contrast-cyan [class*="text-yellow-"],
+.high-contrast-cyan [class*="text-lime-"],
+.high-contrast-cyan [class*="text-green-"],
+.high-contrast-cyan [class*="text-emerald-"],
+.high-contrast-cyan [class*="text-teal-"],
+.high-contrast-cyan [class*="text-cyan-"],
+.high-contrast-cyan [class*="text-sky-"],
+.high-contrast-cyan [class*="text-blue-"],
+.high-contrast-cyan [class*="text-indigo-"],
+.high-contrast-cyan [class*="text-violet-"],
+.high-contrast-cyan [class*="text-purple-"],
+.high-contrast-cyan [class*="text-fuchsia-"],
+.high-contrast-cyan [class*="text-pink-"],
+.high-contrast-cyan [class*="text-rose-"] {
+  color: #00ffff !important;
+}
+
+.high-contrast-yellow [class*="bg-"],
+.high-contrast-cyan [class*="bg-"] {
+  background-image: none !important;
+  background-color: #000000 !important;
+}
+
+/* Specific overrides for interactive elements in HC mode */
+.high-contrast-yellow button,
+.high-contrast-yellow a,
+.high-contrast-yellow input,
+.high-contrast-yellow select,
+.high-contrast-yellow textarea {
+  border: 2px solid #ffff00 !important;
+}
+
+.high-contrast-cyan button,
+.high-contrast-cyan a,
+.high-contrast-cyan input,
+.high-contrast-cyan select,
+.high-contrast-cyan textarea {
+  border: 2px solid #00ffff !important;
+}
+
+/* Ensure the primary buttons still look like buttons */
+.high-contrast-yellow .bg-primary,
+.high-contrast-cyan .bg-primary {
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -114,23 +202,23 @@
 }
 
 .text-size-sm {
-  font-size: 0.875rem;
+  font-size: 0.95rem;
 }
 
 .text-size-base {
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .text-size-lg {
-  font-size: 1.125rem;
+  font-size: 1.6rem;
 }
 
 .text-size-xl {
-  font-size: 1.25rem;
+  font-size: 2.2rem;
 }
 
 .text-size-2xl {
-  font-size: 1.5rem;
+  font-size: 2.8rem;
 }
 
 .btn {
