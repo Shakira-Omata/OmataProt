@@ -146,7 +146,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     <div className="flex min-h-screen bg-background">
       {/* Sidebar Desktop */}
       {/* Sidebar Desktop */}
-      <aside className="hidden lg:flex flex-col w-80 border-r bg-card sticky top-0 h-screen overflow-hidden">
+      <aside className={cn(
+        "flex-col w-80 border-r bg-card sticky top-0 h-screen overflow-hidden transition-all duration-300",
+        textSize === 'sm' ? "hidden lg:flex" : "hidden"
+      )}>
         <div className="flex-1 overflow-y-auto p-4 custom-scrollbar space-y-8">
           <Link to="/" className="flex items-center gap-2 px-2">
             <img src={logo4} alt="SalamaHub Logo" className="h-12 w-auto object-contain" />
@@ -236,7 +239,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       {/* Mobile Navbar */}
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="lg:hidden h-16 border-b bg-card flex items-center justify-between px-4 sticky top-0 z-40">
+        <header className={cn(
+          "h-16 border-b bg-card flex items-center justify-between px-4 sticky top-0 z-40 transition-all",
+          textSize === 'sm' && "lg:hidden"
+        )}>
           <Link to="/" className="flex items-center gap-2">
             <img src={logo4} alt="SalamaHub Logo" className="h-10 w-auto object-contain" />
             <span className="text-lg font-bold tracking-tight text-primary">SalamaHub</span>
@@ -249,7 +255,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         {/* Mobile Sidebar Overlay */}
         {isSidebarOpen && (
           <div
-            className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+            className={cn(
+              "fixed inset-0 bg-black/50 z-50",
+              textSize === 'sm' && "lg:hidden"
+            )}
             onClick={toggleSidebar}
           >
             <div

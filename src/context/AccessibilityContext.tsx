@@ -25,7 +25,7 @@ interface AccessibilityContextType {
 const AccessibilityContext = createContext<AccessibilityContextType | undefined>(undefined);
 
 export const AccessibilityProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [textSize, setTextSize] = useState<TextSize>('base');
+  const [textSize, setTextSize] = useState<TextSize>('sm');
   const [contrastMode, setContrastMode] = useState<ContrastMode>('default');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isEasyRead, setIsEasyRead] = useState(false);
