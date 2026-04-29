@@ -13,12 +13,12 @@ const DiverseCorner: React.FC = () => {
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
       {/* Hero Section */}
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-50 via-pink-50 to-rose-50 p-10 md:p-16 border-2 border-purple-200">
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 rounded-full bg-purple-200/20 blur-3xl pointer-events-none" />
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-cyan-50 p-10 md:p-16 border-2 border-blue-200">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 rounded-full bg-blue-200/20 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12">
           <div className="flex-1 space-y-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 text-purple-700 rounded-full font-bold text-sm uppercase tracking-widest">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-bold text-sm uppercase tracking-widest">
               <Accessibility size={18} /> Inclusive Space
             </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-tight tracking-tight">
@@ -32,12 +32,12 @@ const DiverseCorner: React.FC = () => {
           {/* Values Grid */}
           <div className="flex-1 grid grid-cols-2 gap-4">
             {[
-              { icon: Heart, label: "Dignity", color: "pink" },
-              { icon: Smile, label: "Inclusion", color: "yellow" },
-              { icon: Accessibility, label: "Access", color: "blue" },
-              { icon: Star, label: "Power", color: "purple" }
+              { icon: Heart, label: "Dignity", color: "blue" },
+              { icon: Smile, label: "Inclusion", color: "cyan" },
+              { icon: Accessibility, label: "Access", color: "indigo" },
+              { icon: Star, label: "Power", color: "blue" }
             ].map((item, i) => (
-              <div key={i} className="p-6 rounded-2xl bg-white border-2 border-slate-200 shadow-sm hover:shadow-md transition-all hover:border-purple-300 flex flex-col items-center text-center gap-3">
+              <div key={i} className="p-6 rounded-2xl bg-white border-2 border-slate-200 shadow-sm hover:shadow-md transition-all hover:border-blue-300 flex flex-col items-center text-center gap-3">
                 <item.icon size={32} className={`text-${item.color}-500`} />
                 <span className="font-bold text-slate-900 text-sm">{item.label}</span>
               </div>
@@ -55,13 +55,14 @@ const DiverseCorner: React.FC = () => {
               key={item.id}
               title={item.title}
               icon={<Sparkles size={24} />}
-              colorScheme="purple"
+              colorScheme="blue"
+              className="hover:shadow-xl hover:-translate-y-2 transition-all duration-300 cursor-pointer border-2 hover:border-blue-300"
             >
               <ContentSpacing>
                 <p className="text-slate-700 leading-relaxed mb-4 flex-1">
                   {item.content}
                 </p>
-                <button className="flex items-center gap-2 text-purple-600 font-bold hover:gap-3 transition-all group">
+                <button className="flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all group">
                   Learn More <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </ContentSpacing>
@@ -71,9 +72,9 @@ const DiverseCorner: React.FC = () => {
       </section>
 
       {/* LGBTQ+ Inclusion Section */}
-      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 p-10 md:p-16 border-2 border-indigo-200">
-        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-80 h-80 rounded-full bg-indigo-200/20 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-pink-200/20 blur-3xl pointer-events-none" />
+      <section className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 p-10 md:p-16 border-2 border-blue-200">
+        <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-80 h-80 rounded-full bg-blue-200/20 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-sky-200/20 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 flex flex-col lg:flex-row items-start gap-12">
           <div className="flex-shrink-0 w-32 h-32 rounded-2xl bg-gradient-to-br from-indigo-200 to-pink-200 flex items-center justify-center shadow-lg">
