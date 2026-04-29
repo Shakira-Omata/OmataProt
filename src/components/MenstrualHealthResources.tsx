@@ -16,15 +16,12 @@ import {
 import type { TopicResources } from '../data/topics';
 import {
   SectionCard,
-  CardTitle,
-  CardContent,
   GridContainer,
   StatCard,
   CollapsibleItem,
   InfoBox,
   SectionSpacing,
-  ContentSpacing,
-  DecorativeLine
+  ContentSpacing
 } from './DesignSystem';
 
 interface MenstrualHealthResourcesProps {

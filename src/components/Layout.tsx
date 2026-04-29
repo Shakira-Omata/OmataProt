@@ -99,7 +99,6 @@ const LearnNavItem = ({ onSubItemClick }: { onSubItemClick?: () => void }) => {
           {/* Topic navigation cards */}
           <div className="space-y-2">
             {topics.map((topic) => {
-              const isActive = location.pathname === `/learn/${topic.id}`;
               return (
                 <NavLink
                   key={topic.id}

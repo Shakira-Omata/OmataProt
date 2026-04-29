@@ -4,7 +4,6 @@ import { BookOpen, Search, ChevronDown, ChevronRight, Zap, Heart, Brain, Shield 
 import topics from '../data/topics/index';
 import {
   SectionCard,
-  CardContent,
   BaseCard,
   GridContainer
 } from '../components/DesignSystem';
@@ -89,7 +88,7 @@ const Learn: React.FC = () => {
           <div className="border-t-2 border-slate-200">
             {filteredTopics.length > 0 ? (
               <div className="divide-y divide-slate-200">
-                {filteredTopics.map((topic, index) => (
+                {filteredTopics.map((topic) => (
                   <Link
                     key={topic.id}
                     to={`/learn/${topic.id}`}

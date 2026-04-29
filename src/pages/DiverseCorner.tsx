@@ -1,9 +1,8 @@
 import React from 'react';
-import { Users, Accessibility, Heart, MessageCircle, Info, Sparkles, Smile, Star, ChevronRight } from 'lucide-react';
+import { Users, Accessibility, Heart, MessageCircle, Sparkles, Smile, Star, ChevronRight } from 'lucide-react';
 import diverseData from '../data/diverse.json';
 import {
   SectionCard,
-  BaseCard,
   GridContainer,
   ContentSpacing,
   InfoBox

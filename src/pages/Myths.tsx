@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { HelpCircle, CheckCircle2, Lightbulb, MessageCircle, Send } from 'lucide-react';
 import myths from '../data/myths.json';
 import {
-  SectionCard,
   BaseCard,
-  CollapsibleItem,
   InfoBox,
   ContentSpacing
 } from '../components/DesignSystem';

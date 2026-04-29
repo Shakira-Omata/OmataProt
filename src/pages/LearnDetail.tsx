@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -19,8 +19,6 @@ import { useAccessibility } from '../context/AccessibilityContext';
 import MenstrualHealthResources from '../components/MenstrualHealthResources';
 import {
   SectionCard,
-  CardTitle,
-  CardContent,
   InfoBox,
   BaseCard,
   GridContainer,

@@ -5,7 +5,6 @@ import {
   SectionCard,
   BaseCard,
   GridContainer,
-  CardTitle,
   ContentSpacing,
   InfoBox
 } from '../components/DesignSystem';

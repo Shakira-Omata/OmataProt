@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { type ReactNode } from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -197,6 +197,7 @@ interface InfoBoxProps {
   variant?: 'info' | 'success' | 'warning' | 'danger';
   icon?: React.ReactNode;
   title?: string;
+  className?: string;
 }
 
 const variantMap = {
