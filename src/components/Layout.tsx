@@ -175,11 +175,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     key={size}
                     onClick={() => setTextSize(size)}
                     className={cn(
-                      "w-10 h-10 rounded-lg text-xs font-bold border transition-all",
+                      "w-10 h-10 flex items-center justify-center rounded-lg font-bold border transition-all",
                       textSize === size ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
                     )}
                   >
-                    A{size === 'sm' ? '' : size.toUpperCase()}
+                    <span className={
+                      size === 'sm' ? 'text-sm' : 
+                      size === 'base' ? 'text-base' : 
+                      size === 'lg' ? 'text-lg' : 'text-xl'
+                    }>A</span>
                   </button>
                 ))}
               </div>
@@ -268,16 +272,20 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </nav>
               <div className="mt-auto pt-4 border-t space-y-4">
                 <div className="flex gap-2">
-                  {(['sm', 'base', 'lg', 'xl'] as const).map(size => (
+                  {(['sm', 'base', 'lg'] as const).map(size => (
                     <button
                       key={size}
                       onClick={() => setTextSize(size)}
                       className={cn(
-                        "flex-1 h-10 rounded-lg text-sm font-bold border",
+                        "flex-1 h-10 flex items-center justify-center rounded-lg font-bold border",
                         textSize === size ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border"
                       )}
                     >
-                      A
+                      <span className={
+                        size === 'sm' ? 'text-sm' : 
+                        size === 'base' ? 'text-base' : 
+                        size === 'lg' ? 'text-lg' : 'text-xl'
+                      }>A</span>
                     </button>
                   ))}
                 </div>
