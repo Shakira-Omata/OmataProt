@@ -14,7 +14,8 @@ import {
   User,
   LogOut,
   ChevronRight,
-  ChevronDown
+  ChevronDown,
+  MessageCircle
 } from 'lucide-react';
 import { useAccessibility } from '../context/AccessibilityContext';
 import { clsx, type ClassValue } from 'clsx';
@@ -162,6 +163,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <NavItem to="/rights" icon={Shield} label="Know Your Rights" />
             <NavItem to="/diverse" icon={Users} label="Diverse Corner" />
             <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" />
+            <NavItem to="/chat" icon={MessageCircle} label="Anonymous Chat" />
             <NavItem to="/support" icon={Phone} label="Get Support" />
             <NavItem to="/guides" icon={Download} label="Guides & Tools" />
             <NavItem to="/about" icon={Info} label="About Us" />
@@ -275,6 +277,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <NavItem to="/rights" icon={Shield} label="Know Your Rights" onClick={toggleSidebar} />
                 <NavItem to="/diverse" icon={Users} label="Diverse Corner" onClick={toggleSidebar} />
                 <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" onClick={toggleSidebar} />
+                <NavItem to="/chat" icon={MessageCircle} label="Anonymous Chat" onClick={toggleSidebar} />
                 <NavItem to="/support" icon={Phone} label="Get Support" onClick={toggleSidebar} />
                 <NavItem to="/guides" icon={Download} label="Guides & Tools" onClick={toggleSidebar} />
                 <NavItem to="/about" icon={Info} label="About Us" onClick={toggleSidebar} />

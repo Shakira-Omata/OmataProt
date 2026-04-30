@@ -14,6 +14,7 @@ import Guides from './pages/Guides';
 import About from './pages/About';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import AnonymousChat from './pages/AnonymousChat';
 
 const App: React.FC = () => {
   return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Route path="/support" element={<Layout><Support /></Layout>} />
             <Route path="/guides" element={<Layout><Guides /></Layout>} />
             <Route path="/about" element={<Layout><About /></Layout>} />
+            <Route path="/chat" element={<Layout><AnonymousChat /></Layout>} />
 
             {/* Fallback */}
             <Route path="*" element={<Navigate to="/" replace />} />
