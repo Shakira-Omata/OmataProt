@@ -9,7 +9,11 @@ import {
   InfoBox
 } from '../components/DesignSystem';
 
+import PageActions from '../components/PageActions';
+
 const Guides: React.FC = () => {
+  const contentToSpeak = "Guides and Resources. Educational Toolkits. Download our comprehensive SRHR guides for offline reading or sharing. All resources are designed to be youth-friendly, accessible, and practical. We offer downloads in PDF and Braille-ready formats, as well as visual stories and videos.";
+
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
       {/* Hero Section */}
@@ -23,6 +27,14 @@ const Guides: React.FC = () => {
         <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed font-medium">
           Download our comprehensive SRHR guides for offline reading or sharing. All resources are designed to be youth-friendly, accessible, and practical.
         </p>
+
+        <PageActions 
+          id="guides-page"
+          title="Guides & Resources"
+          description="Download educational SRHR toolkits and resources."
+          contentToSpeak={contentToSpeak}
+          readTime="4 min read"
+        />
       </section>
 
       {/* Guides Grid */}

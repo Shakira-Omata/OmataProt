@@ -7,8 +7,11 @@ import {
   ContentSpacing
 } from '../components/DesignSystem';
 
+import PageActions from '../components/PageActions';
+
 const Myths: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const contentToSpeak = "Myths and Facts About SRHR. We're addressing common misconceptions with evidence-based facts. Let's separate myths from reality so you can make informed decisions about your health and rights. We cover topics like contraception, STI transmission, and more.";
 
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
@@ -23,6 +26,14 @@ const Myths: React.FC = () => {
         <p className="text-xl md:text-2xl text-slate-600 max-w-3xl leading-relaxed font-medium">
           We're addressing common misconceptions with evidence-based facts. Let's separate myths from reality so you can make informed decisions about your health and rights.
         </p>
+
+        <PageActions 
+          id="myths-page"
+          title="Myths & Facts"
+          description="Debunking common misconceptions about SRHR in Kenya."
+          contentToSpeak={contentToSpeak}
+          readTime="6 min read"
+        />
       </section>
 
       {/* Myths Accordion */}

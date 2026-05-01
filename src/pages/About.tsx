@@ -2,7 +2,11 @@ import React from 'react';
 import { Info, Heart, Shield, Accessibility, Users, Globe, Handshake, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import PageActions from '../components/PageActions';
+
 const About: React.FC = () => {
+  const contentToSpeak = "About SalamaHub. Empowering Kenyan youth with accessible, inclusive, and judgment-free SRHR information. We exist because accessing sexual and reproductive health information shouldn't be difficult or scary. Our core values include Inclusion, Dignity, Empowerment, and Accuracy.";
+
   return (
     <div className="max-w-5xl mx-auto space-y-20 animate-in fade-in duration-700 py-12">
       <section className="text-center space-y-8">
@@ -16,6 +20,16 @@ const About: React.FC = () => {
            <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-medium">
              Empowering Kenyan youth with accessible, inclusive, and judgment-free SRHR information.
            </p>
+
+           <div className="max-w-md mx-auto pt-4">
+            <PageActions 
+              id="about-page"
+              title="About SalamaHub"
+              description="Learn about our mission to empower Kenyan youth."
+              contentToSpeak={contentToSpeak}
+              readTime="3 min read"
+            />
+           </div>
         </div>
       </section>
 

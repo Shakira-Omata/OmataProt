@@ -8,7 +8,11 @@ import {
   InfoBox
 } from '../components/DesignSystem';
 
+import PageActions from '../components/PageActions';
+
 const DiverseCorner: React.FC = () => {
+  const contentToSpeak = "Welcome to The Diverse Corner. A dedicated space celebrating the diversity of all young people. We recognize that everyone's SRHR journey is unique, and everyone deserves accurate, affirming information that honors who they are. Our values include Dignity, Inclusion, Access, and Power.";
+
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
       {/* Hero Section */}
@@ -26,6 +30,14 @@ const DiverseCorner: React.FC = () => {
             <p className="text-xl md:text-2xl text-slate-600 leading-relaxed font-medium">
               A dedicated space celebrating the diversity of all young people. We recognize that everyone's SRHR journey is unique, and everyone deserves accurate, affirming information that honors who they are.
             </p>
+
+            <PageActions 
+              id="diverse-corner"
+              title="The Diverse Corner"
+              description="A celebrating space for the diversity of all young people."
+              contentToSpeak={contentToSpeak}
+              readTime="4 min read"
+            />
           </div>
 
           {/* Values Grid */}

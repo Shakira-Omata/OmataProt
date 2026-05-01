@@ -5,10 +5,21 @@ import { useBookmarks } from '../context/BookmarkContext';
 import topics from '../data/topics/index';
 import { BaseCard, GridContainer } from '../components/DesignSystem';
 
+const staticPages = [
+  { id: 'rights-page', title: 'Know Your Rights', description: 'Understanding your SRHR legal protections in Kenya.', path: '/rights' },
+  { id: 'diverse-corner', title: 'The Diverse Corner', description: 'A celebrating space for the diversity of all young people.', path: '/diverse' },
+  { id: 'myths-page', title: 'Myths & Facts', description: 'Debunking common misconceptions about SRHR in Kenya.', path: '/myths' },
+  { id: 'support-page', title: 'Get Support', description: 'Find safe and trusted SRHR services in Kenya.', path: '/support' },
+  { id: 'guides-page', title: 'Guides & Resources', description: 'Download educational SRHR toolkits and resources.', path: '/guides' },
+  { id: 'about-page', title: 'About SalamaHub', description: 'Learn about our mission to empower Kenyan youth.', path: '/about' },
+];
+
 const Bookmarks: React.FC = () => {
   const { bookmarks, toggleBookmark } = useBookmarks();
   
-  const bookmarkedTopics = topics.filter(topic => bookmarks.includes(topic.id));
+  const bookmarkedTopics = topics.filter(topic => bookmarks.includes(topic.id)).map(t => ({ ...t, path: `/learn/${t.id}` }));
+  const bookmarkedStatics = staticPages.filter(page => bookmarks.includes(page.id));
+  const allBookmarks = [...bookmarkedTopics, ...bookmarkedStatics];
 
   return (
     <div className="space-y-8 animate-in fade-in duration-700">
@@ -22,12 +33,12 @@ const Bookmarks: React.FC = () => {
         </p>
       </div>
 
-      {bookmarkedTopics.length > 0 ? (
+      {allBookmarks.length > 0 ? (
         <GridContainer cols={2} gap="lg">
-          {bookmarkedTopics.map((topic) => (
-            <div key={topic.id} className="group relative">
+          {allBookmarks.map((item) => (
+            <div key={item.id} className="group relative">
               <Link 
-                to={`/learn/${topic.id}`}
+                to={item.path}
                 className="block card hover:border-primary/50 transition-all hover:shadow-lg"
               >
                 <div className="flex items-start gap-4">
@@ -35,8 +46,8 @@ const Bookmarks: React.FC = () => {
                     <BookOpen size={24} />
                   </div>
                   <div className="space-y-1 pr-8">
-                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{topic.title}</h3>
-                    <p className="text-sm text-slate-600 line-clamp-2">{topic.description}</p>
+                    <h3 className="text-xl font-bold group-hover:text-primary transition-colors">{item.title}</h3>
+                    <p className="text-sm text-slate-600 line-clamp-2">{item.description}</p>
                   </div>
                 </div>
                 <div className="mt-4 flex items-center text-sm font-bold text-primary opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
@@ -46,7 +57,7 @@ const Bookmarks: React.FC = () => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  toggleBookmark(topic.id);
+                  toggleBookmark(item.id);
                 }}
                 className="absolute top-4 right-4 p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-all"
                 title="Remove from bookmarks"

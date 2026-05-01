@@ -12,11 +12,14 @@ import {
   HelpCircle,
   Play,
   Pause,
-  ArrowRight
+  ArrowRight,
+  Clock,
+  ShieldCheck
 } from 'lucide-react';
 import topics from '../data/topics/index';
 import { useAccessibility } from '../context/AccessibilityContext';
 import { useBookmarks } from '../context/BookmarkContext';
+import PageActions from '../components/PageActions';
 import MenstrualHealthResources from '../components/MenstrualHealthResources';
 import {
   SectionCard,
@@ -29,49 +32,12 @@ import {
   IconList
 } from '../components/DesignSystem';
 
-import { useSpeech } from '../hooks/useSpeech';
-
 const LearnDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { isEasyRead, isAudioEnabled } = useAccessibility();
-  const { speak, stop, isSpeaking } = useSpeech();
+  const { isEasyRead } = useAccessibility();
   
   const topic = topics.find(t => t.id === id) as any;
-
-  const { isBookmarked, toggleBookmark } = useBookmarks();
-  const [isShared, setIsShared] = React.useState(false);
-
-  const toggleAudio = () => {
-    if (isSpeaking) {
-      stop();
-    } else {
-      const textToSpeak = isEasyRead && topic.easyReadContent 
-        ? topic.easyReadContent 
-        : topic.content;
-      speak(textToSpeak);
-    }
-  };
-
-  const handleShare = async () => {
-    const shareData = {
-      title: `SalamaHub - ${topic.title}`,
-      text: topic.description,
-      url: window.location.href,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        setIsShared(true);
-        setTimeout(() => setIsShared(false), 2000);
-      }
-    } catch (err) {
-      console.error('Error sharing:', err);
-    }
-  };
 
   if (!topic) {
     return (
@@ -114,61 +80,12 @@ const LearnDetail: React.FC = () => {
           </p>
         </div>
 
-        {/* Metadata Bar */}
-        <div className="flex flex-wrap items-center gap-6 py-6 border-y-2 border-slate-200">
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-600">
-            <Clock size={18} className="text-blue-600" /> 5 min read
-          </div>
-          <div className="flex items-center gap-2 text-sm font-semibold text-slate-600">
-            <ShieldCheck size={18} className="text-green-600" /> Evidence-Based
-          </div>
-
-          {isAudioEnabled && (
-            <button 
-              onClick={toggleAudio}
-              className={`flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-bold transition-all ${
-                isSpeaking 
-                  ? "bg-blue-600 text-white" 
-                  : "bg-blue-50 text-blue-600 hover:bg-blue-100"
-              }`}
-            >
-              {isSpeaking ? <Pause size={18} /> : <Play size={18} />}
-              {isSpeaking ? "Stop" : "Listen"}
-            </button>
-          )}
-
-          <div className="ml-auto flex gap-2">
-            <button 
-              onClick={() => toggleBookmark(topic.id)}
-              className={`p-3 rounded-lg transition-all ${
-                isBookmarked(topic.id) 
-                  ? "bg-amber-50 text-amber-600" 
-                  : "hover:bg-slate-100 text-slate-500 hover:text-slate-700"
-              }`} 
-              title={isBookmarked(topic.id) ? "Remove Bookmark" : "Bookmark Topic"}
-            >
-              <Bookmark size={20} fill={isBookmarked(topic.id) ? "currentColor" : "none"} />
-            </button>
-            <div className="relative">
-              <button 
-                onClick={handleShare}
-                className={`p-3 rounded-lg transition-all ${
-                  isShared 
-                    ? "bg-green-50 text-green-600" 
-                    : "hover:bg-slate-100 text-slate-500 hover:text-slate-700"
-                }`} 
-                title="Share Topic"
-              >
-                <Share2 size={20} />
-              </button>
-              {isShared && (
-                <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-slate-900 text-white text-xs rounded-lg animate-in fade-in slide-in-from-bottom-1 whitespace-nowrap">
-                  Link Copied!
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
+        <PageActions 
+          id={topic.id}
+          title={topic.title}
+          description={topic.description}
+          contentToSpeak={isEasyRead && topic.easyReadContent ? topic.easyReadContent : topic.content}
+        />
       </section>
 
       {/* Hero Summary Card - Only shown on Overview page as requested */}

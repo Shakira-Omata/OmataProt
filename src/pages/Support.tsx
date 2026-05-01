@@ -2,7 +2,11 @@ import React from 'react';
 import { Phone, MapPin, CheckCircle2, PhoneCall, ExternalLink, MessageSquare, Info } from 'lucide-react';
 import support from '../data/support.json';
 
+import PageActions from '../components/PageActions';
+
 const Support: React.FC = () => {
+  const contentToSpeak = "Get Support. Safe and Trusted Services. Need professional care or someone to talk to? Use our directory to find youth-friendly, inclusive, and confidential services near you in Kenya. We list organizations for mental health, reproductive health, and emergency support.";
+
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
       <section className="space-y-6">
@@ -15,6 +19,14 @@ const Support: React.FC = () => {
         <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
           Need professional care or someone to talk to? Use our directory to find youth-friendly, inclusive, and confidential services near you in Kenya.
         </p>
+
+        <PageActions 
+          id="support-page"
+          title="Get Support"
+          description="Find safe and trusted SRHR services in Kenya."
+          contentToSpeak={contentToSpeak}
+          readTime="5 min read"
+        />
       </section>
 
       <div className="grid md:grid-cols-2 gap-8">

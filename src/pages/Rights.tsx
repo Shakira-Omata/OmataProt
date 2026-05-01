@@ -2,7 +2,11 @@ import React from 'react';
 import { ShieldAlert, ShieldCheck, Gavel } from 'lucide-react';
 import rights from '../data/rights.json';
 
+import PageActions from '../components/PageActions';
+
 const Rights: React.FC = () => {
+  const contentToSpeak = `Know Your Rights. In Kenya, you have specific legal and human rights regarding your sexual and reproductive health. Understanding these rights empowers you to make safe and informed choices. Key rights include: ${rights.map(r => r.title).join(', ')}.`;
+
   return (
     <div className="space-y-12 animate-in fade-in duration-500">
       <section className="space-y-6">
@@ -15,6 +19,14 @@ const Rights: React.FC = () => {
         <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
           In Kenya, you have specific legal and human rights regarding your sexual and reproductive health. Understanding these rights empowers you to make safe and informed choices.
         </p>
+        
+        <PageActions 
+          id="rights-page"
+          title="Know Your Rights"
+          description="Understanding your SRHR legal protections in Kenya."
+          contentToSpeak={contentToSpeak}
+          readTime="8 min read"
+        />
       </section>
 
       <div className="grid md:grid-cols-2 gap-6">
