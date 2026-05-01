@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import topics from '../data/topics/index';
 import { useAccessibility } from '../context/AccessibilityContext';
+import { useBookmarks } from '../context/BookmarkContext';
 import MenstrualHealthResources from '../components/MenstrualHealthResources';
 import {
   SectionCard,
@@ -38,6 +39,9 @@ const LearnDetail: React.FC = () => {
   
   const topic = topics.find(t => t.id === id) as any;
 
+  const { isBookmarked, toggleBookmark } = useBookmarks();
+  const [isShared, setIsShared] = React.useState(false);
+
   const toggleAudio = () => {
     if (isSpeaking) {
       stop();
@@ -46,6 +50,26 @@ const LearnDetail: React.FC = () => {
         ? topic.easyReadContent 
         : topic.content;
       speak(textToSpeak);
+    }
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: `SalamaHub - ${topic.title}`,
+      text: topic.description,
+      url: window.location.href,
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        setIsShared(true);
+        setTimeout(() => setIsShared(false), 2000);
+      }
+    } catch (err) {
+      console.error('Error sharing:', err);
     }
   };
 
@@ -114,12 +138,35 @@ const LearnDetail: React.FC = () => {
           )}
 
           <div className="ml-auto flex gap-2">
-            <button className="p-3 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-slate-700 transition-all" title="Bookmark">
-              <Bookmark size={20} />
+            <button 
+              onClick={() => toggleBookmark(topic.id)}
+              className={`p-3 rounded-lg transition-all ${
+                isBookmarked(topic.id) 
+                  ? "bg-amber-50 text-amber-600" 
+                  : "hover:bg-slate-100 text-slate-500 hover:text-slate-700"
+              }`} 
+              title={isBookmarked(topic.id) ? "Remove Bookmark" : "Bookmark Topic"}
+            >
+              <Bookmark size={20} fill={isBookmarked(topic.id) ? "currentColor" : "none"} />
             </button>
-            <button className="p-3 hover:bg-slate-100 rounded-lg text-slate-500 hover:text-slate-700 transition-all" title="Share">
-              <Share2 size={20} />
-            </button>
+            <div className="relative">
+              <button 
+                onClick={handleShare}
+                className={`p-3 rounded-lg transition-all ${
+                  isShared 
+                    ? "bg-green-50 text-green-600" 
+                    : "hover:bg-slate-100 text-slate-500 hover:text-slate-700"
+                }`} 
+                title="Share Topic"
+              >
+                <Share2 size={20} />
+              </button>
+              {isShared && (
+                <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-slate-900 text-white text-xs rounded-lg animate-in fade-in slide-in-from-bottom-1 whitespace-nowrap">
+                  Link Copied!
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
@@ -145,7 +192,7 @@ const LearnDetail: React.FC = () => {
 
       {/* Main Content Section */}
       <section className="space-y-8">
-        {topic.id === 'pregnancy-parenthood' ? (
+        {topic.id === 'pregnancy-parenthood' && !isEasyRead ? (
           // Redesigned layout for pregnancy topic
           <>
             <ContentSectionCard
@@ -376,7 +423,7 @@ const LearnDetail: React.FC = () => {
               </div>
             </ContentSectionCard>
           </>
-        ) : topic.id === 'menstrual-health' ? (
+        ) : topic.id === 'menstrual-health' && !isEasyRead ? (
           // Redesigned layout for menstrual health
           <>
             <BaseCard className="bg-teal-50/50 border-teal-100 p-8 md:p-10">
@@ -481,7 +528,7 @@ const LearnDetail: React.FC = () => {
               </div>
             </ContentSectionCard>
           </>
-        ) : topic.id === 'overview-rights' ? (
+        ) : topic.id === 'overview-rights' && !isEasyRead ? (
           // Redesigned layout for SRHR Overview
           <>
             <BaseCard className="bg-blue-50/50 border-blue-100 p-8 md:p-10">
@@ -556,7 +603,7 @@ const LearnDetail: React.FC = () => {
               </div>
             </ContentSectionCard>
           </>
-        ) : topic.id === 'puberty-adolescent-health' ? (
+        ) : topic.id === 'puberty-adolescent-health' && !isEasyRead ? (
           // Redesigned layout for Puberty
           <>
             <BaseCard className="bg-orange-50/50 border-orange-100 p-8 md:p-10">
@@ -649,7 +696,7 @@ const LearnDetail: React.FC = () => {
               </div>
             </ContentSectionCard>
           </>
-        ) : topic.id === 'sexual-health-protection' ? (
+        ) : topic.id === 'sexual-health-protection' && !isEasyRead ? (
           // Redesigned layout for Sexual Health
           <>
             <BaseCard className="bg-sky-50/50 border-sky-100 p-8 md:p-10">
@@ -743,7 +790,7 @@ const LearnDetail: React.FC = () => {
               </div>
             </ContentSectionCard>
           </>
-        ) : topic.id === 'mental-health-wellbeing' ? (
+        ) : topic.id === 'mental-health-wellbeing' && !isEasyRead ? (
           // Redesigned layout for Mental Health
           <>
             <BaseCard className="bg-purple-50/50 border-purple-100 p-8 md:p-10">
@@ -855,7 +902,7 @@ const LearnDetail: React.FC = () => {
               </div>
             </ContentSectionCard>
           </>
-        ) : topic.id === 'relationships-support' ? (
+        ) : topic.id === 'relationships-support' && !isEasyRead ? (
           // Redesigned layout for Healthy Relationships
           <>
             <BaseCard className="bg-emerald-50/50 border-emerald-100 p-8 md:p-10">

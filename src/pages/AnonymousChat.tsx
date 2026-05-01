@@ -54,36 +54,28 @@ const AnonymousChat: React.FC = () => {
     setIsTyping(true);
 
     try {
-      // Create a plain text prompt with conversation history for better AI understanding
-      const history = messages
-        .filter(m => m.id !== '1')
-        .map(m => `${m.sender === 'user' ? 'User' : 'Assistant'}: ${m.text}`)
-        .join('\n');
-      
-      const fullPrompt = `${SYSTEM_PROMPT}\n\n${history}\nUser: ${text}\nAssistant:`;
-
-      // Using the stable GET endpoint for Pollinations AI to avoid the deprecation notice
-      // We add ?model=openai and &json=false to get clean text results
-      const url = `https://text.pollinations.ai/${encodeURIComponent(fullPrompt)}?model=openai&system=${encodeURIComponent(SYSTEM_PROMPT)}&json=false`;
-      
-      const response = await fetch(url);
+      // Send message and history to our Netlify serverless function
+      const response = await fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: text,
+          history: messages.map(m => ({
+            role: m.sender === 'user' ? 'user' : 'assistant',
+            content: m.text
+          }))
+        }),
+      });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.details || errorData.error || 'Failed to connect to chat API');
       }
 
-      let responseText = await response.text();
-      
-      // Clean up the response if it includes any weird prefixes
-      responseText = responseText.replace(/^Assistant:\s*/i, '').trim();
-
-      // If for some reason we still get the deprecation notice, we try a fallback model
-      if (responseText.includes('Pollinations legacy text API')) {
-        const fallbackUrl = `https://text.pollinations.ai/${encodeURIComponent(fullPrompt)}?model=mistral&json=false`;
-        const fallbackResponse = await fetch(fallbackUrl);
-        responseText = await fallbackResponse.text();
-        responseText = responseText.replace(/^Assistant:\s*/i, '').trim();
-      }
+      const data = await response.json();
+      const responseText = data.reply;
 
       const newBotMsg: Message = {
         id: (Date.now() + 1).toString(),
@@ -94,9 +86,17 @@ const AnonymousChat: React.FC = () => {
       setMessages(prev => [...prev, newBotMsg]);
     } catch (error: any) {
       console.error("AI Error:", error);
+      
+      let errorDetail = "I'm sorry, I'm having trouble connecting to the AI. Please try sending your message again.";
+      
+      // If we have specific details from our backend error response
+      if (error.statusText || error.message) {
+        errorDetail = `Connection Error: ${error.message || 'The AI service is temporarily unavailable.'}`;
+      }
+
       const errorMsg: Message = {
         id: (Date.now() + 1).toString(),
-        text: "I'm sorry, I'm having trouble connecting to the AI. Please try sending your message again.",
+        text: errorDetail,
         sender: 'bot',
         timestamp: new Date()
       };

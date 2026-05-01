@@ -15,9 +15,11 @@ import {
   LogOut,
   ChevronRight,
   ChevronDown,
-  MessageCircle
+  MessageCircle,
+  Bookmark
 } from 'lucide-react';
 import { useAccessibility } from '../context/AccessibilityContext';
+import { useBookmarks } from '../context/BookmarkContext';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import logo4 from '../assets/logo4.png';
@@ -140,6 +142,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     isAudioEnabled,
     setIsAudioEnabled
   } = useAccessibility();
+  const { bookmarks } = useBookmarks();
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
 
@@ -160,6 +163,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <nav className="space-y-2">
             <NavItem to="/" icon={Home} label="Home" />
             <LearnNavItem />
+            <NavItem to="/bookmarks" icon={Bookmark} label={`My Bookmarks (${bookmarks.length})`} />
             <NavItem to="/rights" icon={Shield} label="Know Your Rights" />
             <NavItem to="/diverse" icon={Users} label="Diverse Corner" />
             <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" />
@@ -274,6 +278,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <nav className="flex-1 space-y-1 overflow-y-auto">
                 <NavItem to="/" icon={Home} label="Home" onClick={toggleSidebar} />
                 <LearnNavItem onSubItemClick={toggleSidebar} />
+                <NavItem to="/bookmarks" icon={Bookmark} label={`My Bookmarks (${bookmarks.length})`} onClick={toggleSidebar} />
                 <NavItem to="/rights" icon={Shield} label="Know Your Rights" onClick={toggleSidebar} />
                 <NavItem to="/diverse" icon={Users} label="Diverse Corner" onClick={toggleSidebar} />
                 <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" onClick={toggleSidebar} />
@@ -309,6 +314,28 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     <button onClick={() => setContrastMode('cyan')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'cyan' ? "bg-cyan-400 text-black border-cyan-400" : "bg-black text-cyan-400 border-black hover:bg-zinc-900")}>Cyan/Black</button>
                     <button onClick={() => setContrastMode('sepia')} className={cn("px-2 py-2 rounded-lg border text-sm font-bold transition-all", contrastMode === 'sepia' ? "bg-[#d4bca4] text-[#3b2a1a] border-[#3b2a1a]" : "bg-[#f4ebd8] text-[#5c4033] border-[#d4bca4] hover:bg-[#eadecc]")}>Reading Mode</button>
                   </div>
+                </div>
+                <div className="space-y-2">
+                  <button
+                    onClick={() => setIsEasyRead(!isEasyRead)}
+                    className={cn(
+                      "w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm border transition-all",
+                      isEasyRead ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
+                    )}
+                  >
+                    Easy Read Mode
+                    <div className={cn("w-4 h-4 rounded-full border border-current", isEasyRead ? "bg-white" : "bg-black")} />
+                  </button>
+                  <button
+                    onClick={() => setIsAudioEnabled(!isAudioEnabled)}
+                    className={cn(
+                      "w-full flex items-center justify-between px-3 py-3 rounded-xl text-sm border transition-all",
+                      isAudioEnabled ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-secondary"
+                    )}
+                  >
+                    Audio Support
+                    <div className={cn("w-4 h-4 rounded-full border border-current", isAudioEnabled ? "bg-white" : "bg-black")} />
+                  </button>
                 </div>
               </div>
             </div>
