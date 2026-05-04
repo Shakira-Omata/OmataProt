@@ -16,7 +16,8 @@ import {
   ChevronRight,
   ChevronDown,
   MessageCircle,
-  Bookmark
+  Bookmark,
+  Heart
 } from 'lucide-react';
 import { useAccessibility } from '../context/AccessibilityContext';
 import { useBookmarks } from '../context/BookmarkContext';
@@ -24,6 +25,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import logo4 from '../assets/logo4.png';
 import topics from '../data/topics/index';
+import FloatingConfessionToggle from './FloatingConfessionToggle';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -168,6 +170,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <NavItem to="/diverse" icon={Users} label="Diverse Corner" />
             <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" />
             <NavItem to="/chat" icon={MessageCircle} label="Anonymous Chat" />
+            <NavItem to="/confessions" icon={Heart} label="Safe Confessions" />
             <NavItem to="/support" icon={Phone} label="Get Support" />
             <NavItem to="/guides" icon={Download} label="Guides & Tools" />
             <NavItem to="/about" icon={Info} label="About Us" />
@@ -283,6 +286,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <NavItem to="/diverse" icon={Users} label="Diverse Corner" onClick={toggleSidebar} />
                 <NavItem to="/myths" icon={HelpCircle} label="Questions & Myths" onClick={toggleSidebar} />
                 <NavItem to="/chat" icon={MessageCircle} label="Anonymous Chat" onClick={toggleSidebar} />
+                <NavItem to="/confessions" icon={Heart} label="Safe Confessions" onClick={toggleSidebar} />
                 <NavItem to="/support" icon={Phone} label="Get Support" onClick={toggleSidebar} />
                 <NavItem to="/guides" icon={Download} label="Guides & Tools" onClick={toggleSidebar} />
                 <NavItem to="/about" icon={Info} label="About Us" onClick={toggleSidebar} />
@@ -347,6 +351,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           {children}
         </main>
       </div>
+
+      {/* Floating Confessions Toggle */}
+      <FloatingConfessionToggle />
     </div>
   );
 };

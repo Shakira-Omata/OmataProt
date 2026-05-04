@@ -17,6 +17,7 @@ import Bookmarks from './pages/Bookmarks';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import AnonymousChat from './pages/AnonymousChat';
+import Confessions from './pages/Confessions';
 
 const App: React.FC = () => {
   return (
@@ -41,6 +42,7 @@ const App: React.FC = () => {
               <Route path="/about" element={<Layout><About /></Layout>} />
               <Route path="/bookmarks" element={<Layout><Bookmarks /></Layout>} />
               <Route path="/chat" element={<Layout><AnonymousChat /></Layout>} />
+              <Route path="/confessions" element={<Layout><Confessions /></Layout>} />
 
               {/* Fallback */}
               <Route path="*" element={<Navigate to="/" replace />} />

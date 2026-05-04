@@ -12,9 +12,7 @@ import {
   HelpCircle,
   Play,
   Pause,
-  ArrowRight,
-  Clock,
-  ShieldCheck
+  ArrowRight
 } from 'lucide-react';
 import topics from '../data/topics/index';
 import { useAccessibility } from '../context/AccessibilityContext';
